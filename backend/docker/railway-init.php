@@ -6,6 +6,7 @@
  *   - imports installation/backup/database.sql into an empty database
  *   - creates the first admin from ADMIN_EMAIL / ADMIN_PASSWORD
  *   - copies default images from installation/backup/public.zip into an empty storage volume
+ *   - applies installation/branding/logo.png as the business logo, once per distinct file
  */
 
 use App\CentralLogics\Helpers;
@@ -86,5 +87,20 @@ if (!is_dir($storage . '/business')) {
         }
         $zip->close();
         say('default images copied to storage');
+    }
+}
+
+// Marker file on the volume means a later logo change in the admin panel is not overwritten on redeploy
+$brandLogo = base_path('installation/branding/logo.png');
+if (is_file($brandLogo)) {
+    $hash = md5_file($brandLogo);
+    $marker = $storage . '/business/.brand-logo-' . $hash;
+    if (!file_exists($marker)) {
+        $name = date('Y-m-d') . '-' . substr($hash, 0, 13) . '.png';
+        @mkdir($storage . '/business', 0775, true);
+        copy($brandLogo, $storage . '/business/' . $name);
+        Helpers::businessUpdateOrInsert(['key' => 'logo'], ['value' => $name]);
+        touch($marker);
+        say("brand logo applied: business/{$name}");
     }
 }
