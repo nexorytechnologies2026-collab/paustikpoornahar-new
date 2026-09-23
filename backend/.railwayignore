@@ -1,0 +1,15 @@
+.env
+.env.backup
+vendor/
+node_modules/
+.idea/
+.vscode/
+bootstrap/cache/*.php
+storage/logs/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/app/__MACOSX/
+storage/app/public/*
+public/storage
+installation/backup/database_8.*.sql

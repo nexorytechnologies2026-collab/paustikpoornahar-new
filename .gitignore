@@ -1,0 +1,39 @@
+# Vendor distribution files
+*.zip
+!backend/installation/backup/public.zip
+__MACOSX/
+Documentation.url
+.commandcode/
+.DS_Store
+*.stackdump
+
+# Backend secrets and generated files
+backend/.env
+backend/.env.backup
+backend/vendor/
+backend/node_modules/
+backend/storage/logs/*
+backend/storage/framework/cache/data/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/storage/app/__MACOSX/
+backend/storage/*.key
+backend/bootstrap/cache/*.php
+backend/public/storage
+backend/.idea/
+
+# Customer app: Firebase configs hold project keys; add your own locally
+customer app/android/app/google-services.json
+customer app/ios/Runner/GoogleService-Info.plist
+customer app/ios/GoogleService-Info.plist
+customer app/android/key.properties
+customer app/android/app/*.jks
+customer app/android/app/*.keystore
+
+# Build and temp output
+customer app/android/build/
+customer app/android/.gradle/
+customer app/android/app/.cxx/
+backend/storage/tmp/
+backend/storage/debugbar/*
+!backend/storage/debugbar/.gitignore
