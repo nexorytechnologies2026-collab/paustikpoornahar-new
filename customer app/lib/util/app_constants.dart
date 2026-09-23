@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 class AppConstants {
   static const String appName = 'Paustik Poornahar';
-  static const double appVersion = 9.0; ///Flutter SDK: 3.41.6
+  static const double appVersion = 1.0; ///Flutter SDK: 3.41.6
 
   static const String fontFamily = 'Roboto';
   static const bool payInWevView = false;

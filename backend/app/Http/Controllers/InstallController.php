@@ -177,7 +177,7 @@ class InstallController extends Controller
                     PUSHER_APP_CLUSTER=mt1
 
 
-                    SOFTWARE_VERSION=9.0
+                    SOFTWARE_VERSION=1.0.0
                     REACT_APP_KEY=43218516
                     ';
             $file = fopen(base_path('.env'), 'w');

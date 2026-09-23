@@ -20,6 +20,7 @@
     <!-- Font -->
     <link href="{{dynamicAsset('assets/admin/css/fonts.css')}}" rel="stylesheet">
     <!-- CSS Implementing Plugins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{dynamicAsset('assets/admin')}}/css/vendor.min.css">
     <link rel="stylesheet" href="{{dynamicAsset('assets/admin')}}/vendor/icon-set/style.css">
     <!-- CSS Front Template -->

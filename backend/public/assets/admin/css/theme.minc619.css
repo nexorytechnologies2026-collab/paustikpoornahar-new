@@ -6276,7 +6276,7 @@ a:hover .text-hover-primary {
     height: 1.53125rem;
     line-height: 1.6;
     font-size: 0.8125rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     color: #677788;
     background-color: #fff;
     border: 0.0625rem solid #e7eaf3;
@@ -6403,7 +6403,7 @@ a:hover .text-hover-primary {
 
 .quill-custom .ql-editor > * {
     font-size: 0.875rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     color: #334257;
 }
 
@@ -6414,7 +6414,7 @@ a:hover .text-hover-primary {
 .quill-custom .ql-editor.ql-blank::before {
     inset-inline-start: 1.3125rem;
     color: #97a4af;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-style: normal;
 }
 
@@ -6468,7 +6468,7 @@ a:hover .text-hover-primary {
 .quill-custom .ql-snow .ql-tooltip::before {
     display: block;
     text-align: center;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 1rem;
     border-bottom: 0.0625rem solid #e7eaf3;
@@ -6506,7 +6506,7 @@ a:hover .text-hover-primary {
 .quill-custom .ql-snow .ql-tooltip.ql-editing input[type="text"] {
     height: auto;
     display: block;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .quill-custom .ql-snow .ql-tooltip.ql-editing input[type="text"]:focus {
@@ -7524,7 +7524,7 @@ aside .nav-link {
     width: 100% !important;
     max-width: 500px !important;
     font-size: 1em !important;
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .swal2-popup .swal2-icon {
@@ -7544,7 +7544,7 @@ aside .nav-link {
 }
 
 .swal2-popup .swal2-title {
-    font-family: "Public Sans", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1.5em !important;
 }
 
@@ -7568,7 +7568,7 @@ aside .nav-link {
 }
 
 .btn {
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .card-title {
@@ -9373,7 +9373,7 @@ input.form-control::placeholder {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     font-size: 14px;
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
     text-align: center;
 }
 

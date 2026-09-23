@@ -1908,7 +1908,7 @@ span.initial-38-7,
 .illustrated-layout-template-2 {
     background-color: #fff;
     color: #636b6f;
-    font-family: "Nunito", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 100;
     height: 100vh;
     margin: 0;
@@ -1917,7 +1917,7 @@ span.initial-38-7,
 .illustrated-layout-template-2 body {
     background-color: #fff;
     color: #636b6f;
-    font-family: "Nunito", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 100;
     height: 100vh;
     margin: 0;
@@ -2208,7 +2208,7 @@ span.initial-38-7,
 }
 
 .illustrated-layout-template .font-sans {
-    font-family: Nunito, sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .illustrated-layout-template .font-light {
@@ -2370,7 +2370,7 @@ span.initial-38-7,
 .minimal-layout-template body {
     background-color: #fff;
     color: #636b6f;
-    font-family: "Nunito", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-weight: 100;
     height: 100vh;
     margin: 0;
@@ -3843,7 +3843,7 @@ ul.delivery--information-single li:not(:last-child) {
 }
 
 .__trx-print.initial-38-1 * {
-    font-family: "Inter", sans-serif !important;
+    font-family: "Poppins", sans-serif !important;
 }
 
 .loading--2 {
@@ -4704,7 +4704,7 @@ button.resend {
 
 .warning-modal h5,
 .status-warning-modal h5 {
-    font-family: "Inter", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .status-warning-modal {
