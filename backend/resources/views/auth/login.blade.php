@@ -134,9 +134,9 @@
 
         /* Built-in captcha, also styles the markup that reload-captcha swaps in */
         .pp-captcha { display: flex; gap: 10px; margin: -4px 0 22px; }
-        .pp-captcha > div { flex: 1 1 50%; max-width: none; padding: 0; background: transparent !important; }
+        .pp-captcha > div { flex: 1 1 50%; min-width: 0; max-width: none; padding: 0; background: transparent !important; }
         .pp-captcha .form-control { height: 48px; border: 1px solid var(--pp-border) !important; border-radius: 12px; font-size: 14px; }
-        .pp-captcha img { height: 48px; border: 1px solid var(--pp-border); border-radius: 12px !important; object-fit: cover; }
+        .pp-captcha img { flex: 1 1 auto; min-width: 0; width: auto !important; height: 48px; border: 1px solid var(--pp-border); border-radius: 12px !important; object-fit: cover; }
         .pp-captcha .reloadCaptcha, .pp-captcha #reloadCaptcha { display: flex; align-items: center; padding: 0 0 0 8px !important; cursor: pointer; color: var(--pp-muted); }
 
         .pp-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
