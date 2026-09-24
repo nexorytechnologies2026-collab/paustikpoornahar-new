@@ -7157,7 +7157,7 @@ a[class*="btn--"]:hover {
 }
 
 .btn-outline-warning:not(:hover) {
-    background: rgba(255, 134, 32, 0.05) !important;
+    background: rgba(249, 184, 2, 0.05) !important;
     color: var(--warning-clr) !important;
 }
 
@@ -8149,7 +8149,7 @@ aside .nav-link {
 
 .badge--pending {
     color: #ff8620;
-    background: rgba(255, 134, 32, 0.05);
+    background: rgba(249, 184, 2, 0.05);
 }
 
 .badge--cancel {
@@ -9356,7 +9356,7 @@ input.form-control::placeholder {
     border-radius: 50%;
     -o-object-fit: cover;
     object-fit: cover;
-    border: 1px solid rgba(240, 111, 0, 0.3);
+    border: 1px solid rgba(14, 158, 49, 0.3);
 }
 
 .most-popular li .count {
@@ -9416,7 +9416,7 @@ input.form-control::placeholder {
 }
 
 .top--deliveryman img {
-    border: 1px solid rgba(240, 111, 0, 0.3);
+    border: 1px solid rgba(14, 158, 49, 0.3);
 }
 
 .top--deliveryman .name {
@@ -9515,7 +9515,7 @@ input.form-control::placeholder {
 }
 
 .top--rated-food img {
-    border: 1px solid rgba(240, 111, 0, 0.3);
+    border: 1px solid rgba(14, 158, 49, 0.3);
 }
 
 .top--resturant {
@@ -9562,7 +9562,7 @@ input.form-control::placeholder {
     -o-object-fit: cover;
     object-fit: cover;
     border-radius: 50%;
-    border: 1px solid rgba(240, 111, 0, 0.3);
+    border: 1px solid rgba(14, 158, 49, 0.3);
 }
 
 .top--resturant li .top--resturant-item .top--resturant-item-content {
@@ -9620,7 +9620,7 @@ input.form-control::placeholder {
 }
 
 .top-selling-food-card img {
-    border: 1px solid rgba(240, 111, 0, 0.3);
+    border: 1px solid rgba(14, 158, 49, 0.3);
 }
 
 .card-header-icon ~ span {

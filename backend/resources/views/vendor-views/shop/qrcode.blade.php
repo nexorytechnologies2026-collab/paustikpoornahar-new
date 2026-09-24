@@ -47,8 +47,8 @@
             top: 48%;
         }
         .qr-wrapper .subtext {
-            border-top: 1px solid rgba(247, 196, 70, 0.40);
-            border-bottom: 1px solid rgba(247, 196, 70, 0.40);
+            border-top: 1px solid rgba(249, 184, 2, 0.40);
+            border-bottom: 1px solid rgba(249, 184, 2, 0.40);
             padding-block: 6px;
             text-align: center;
             max-width: 290px;
