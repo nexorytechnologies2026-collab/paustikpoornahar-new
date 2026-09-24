@@ -1,34 +1,49 @@
 {
   "project_info": {
-    "project_number": "491987943015",
-    "project_id": "stackmart-500c7",
-    "storage_bucket": "stackmart-500c7.appspot.com"
+    "project_number": "859076248736",
+    "project_id": "paushtikpoornaahar-576be",
+    "storage_bucket": "paushtikpoornaahar-576be.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:491987943015:android:a6fb4303cc4bf3d18f1ec2",
+        "mobilesdk_app_id": "1:859076248736:android:c9fe702c5e8a6274a3f5c5",
         "android_client_info": {
-          "package_name": "com.sixamtech.sixam_mart_user"
+          "package_name": "com.poornaahar.customer"
         }
       },
       "oauth_client": [
         {
-          "client_id": "491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com",
+          "client_id": "859076248736-cmc72u17m5iat1k1l177892m7jkke2fu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.poornaahar.customer",
+            "certificate_hash": "ba0fdfd0f1fb8f08221ad830e7d44b17ff159a37"
+          }
+        },
+        {
+          "client_id": "859076248736-n66omq4omo4pfa3drt62vecga6cfm38f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCc3OCd5I2xSlnftZ4bFAbuCzMhgQHLivA"
+          "current_key": "AIzaSyCe3XtGDcgQs9OGJONh-Qg7saykxhSRSkc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com",
+              "client_id": "859076248736-n66omq4omo4pfa3drt62vecga6cfm38f.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "859076248736-7e6t5o64fpnsl0ch7gtb13ukml6v328b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.poornaahar.restaurant"
+              }
             }
           ]
         }
@@ -36,28 +51,35 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:491987943015:android:de46aa9776b1b4888f1ec2",
+        "mobilesdk_app_id": "1:859076248736:android:6d175ec7d746d0e2a3f5c5",
         "android_client_info": {
-          "package_name": "com.sixamtech.stack_food_user"
+          "package_name": "com.poornaahar.distributor"
         }
       },
       "oauth_client": [
         {
-          "client_id": "491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com",
+          "client_id": "859076248736-n66omq4omo4pfa3drt62vecga6cfm38f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCc3OCd5I2xSlnftZ4bFAbuCzMhgQHLivA"
+          "current_key": "AIzaSyCe3XtGDcgQs9OGJONh-Qg7saykxhSRSkc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com",
+              "client_id": "859076248736-n66omq4omo4pfa3drt62vecga6cfm38f.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "859076248736-7e6t5o64fpnsl0ch7gtb13ukml6v328b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.poornaahar.restaurant"
+              }
             }
           ]
         }
@@ -65,28 +87,35 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:491987943015:android:63ecc08c0433bf7c8f1ec2",
+        "mobilesdk_app_id": "1:859076248736:android:a1a31f575c41b95aa3f5c5",
         "android_client_info": {
-          "package_name": "com.sixamtech.stack_food_vandor"
+          "package_name": "com.poornaahar.restaurant"
         }
       },
       "oauth_client": [
         {
-          "client_id": "491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com",
+          "client_id": "859076248736-n66omq4omo4pfa3drt62vecga6cfm38f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCc3OCd5I2xSlnftZ4bFAbuCzMhgQHLivA"
+          "current_key": "AIzaSyCe3XtGDcgQs9OGJONh-Qg7saykxhSRSkc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "491987943015-agln6biv84krpnngdphj87jkko7r9lb8.apps.googleusercontent.com",
+              "client_id": "859076248736-n66omq4omo4pfa3drt62vecga6cfm38f.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "859076248736-7e6t5o64fpnsl0ch7gtb13ukml6v328b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.poornaahar.restaurant"
+              }
             }
           ]
         }

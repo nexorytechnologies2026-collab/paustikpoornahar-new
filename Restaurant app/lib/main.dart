@@ -28,10 +28,11 @@ Future<void> main() async {
   if(GetPlatform.isAndroid) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: 'AIzaSyCc3OCd5I2xSlnftZ4bFAbuCzMhgQHLivA',
-        appId: '1:491987943015:android:a6fb4303cc4bf3d18f1ec2',
-        messagingSenderId: '491987943015',
-        projectId: 'stackmart-500c7',
+        apiKey: 'AIzaSyCe3XtGDcgQs9OGJONh-Qg7saykxhSRSkc',
+        appId: '1:859076248736:android:a1a31f575c41b95aa3f5c5',
+        messagingSenderId: '859076248736',
+        projectId: 'paushtikpoornaahar-576be',
+        storageBucket: 'paushtikpoornaahar-576be.firebasestorage.app',
       ),
     );
   } else {

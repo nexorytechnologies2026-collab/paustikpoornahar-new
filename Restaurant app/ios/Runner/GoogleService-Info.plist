@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>859076248736-7e6t5o64fpnsl0ch7gtb13ukml6v328b.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.859076248736-7e6t5o64fpnsl0ch7gtb13ukml6v328b</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>859076248736-cmc72u17m5iat1k1l177892m7jkke2fu.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD2TBTOHofBcPeuxDWIezyHnZTz3s7LW0k</string>
+	<key>GCM_SENDER_ID</key>
+	<string>859076248736</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.poornaahar.restaurant</string>
+	<key>PROJECT_ID</key>
+	<string>paushtikpoornaahar-576be</string>
+	<key>STORAGE_BUCKET</key>
+	<string>paushtikpoornaahar-576be.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:859076248736:ios:ba17eea4a8fd6a2ea3f5c5</string>
+</dict>
+</plist>
