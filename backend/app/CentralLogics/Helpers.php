@@ -2236,6 +2236,10 @@ class Helpers
 
     public static function module_permission_check($mod_name)
     {
+        // Restaurants deliver their own orders; the platform has no delivery men
+        if ($mod_name == 'deliveryman') {
+            return false;
+        }
 
         if (! auth('admin')->user()->role) {
             return false;
@@ -2259,6 +2263,10 @@ class Helpers
 
     public static function employee_module_permission_check($mod_name)
     {
+        // Restaurants deliver their own orders; the platform has no delivery men
+        if ($mod_name == 'deliveryman') {
+            return false;
+        }
 
         if (auth('vendor')->check()) {
             if ($mod_name == 'reviews') {

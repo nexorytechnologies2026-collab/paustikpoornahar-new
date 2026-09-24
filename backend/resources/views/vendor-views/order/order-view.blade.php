@@ -933,6 +933,7 @@
                                             'refunded',
                                             'refund_request_canceled',
                                         ]) &&
+                                            \App\CentralLogics\Helpers::employee_module_permission_check('deliveryman') &&
                                             ((isset($order->restaurant) &&
                                                 ($order->restaurant->restaurant_model == 'commission' && $order->restaurant->self_delivery_system)) ||
                                                 ($order->restaurant->restaurant_model == 'subscription' &&
@@ -1002,6 +1003,7 @@
                             @endif
                         @else
                             @if (
+                                \App\CentralLogics\Helpers::employee_module_permission_check('deliveryman') &&
                                 !$order->delivery_man &&
                                     !in_array($order['order_status'], [
                                         'handover',

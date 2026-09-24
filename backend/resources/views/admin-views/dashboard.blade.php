@@ -98,6 +98,7 @@
                 <!-- End Card -->
             </div>
 
+            @if (\App\CentralLogics\Helpers::module_permission_check('deliveryman'))
             <div class="col-lg-6">
                 <!-- Card -->
                 <div class="card h-100" id="top-deliveryman-view">
@@ -105,6 +106,7 @@
                 </div>
                 <!-- End Card -->
             </div>
+            @endif
 
             <div class="col-lg-6">
                 <!-- Card -->

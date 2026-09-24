@@ -337,6 +337,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
 
 
                         <!-- Order dispachment -->
+                        @if (Helpers::module_permission_check('deliveryman'))
                         <li
                             class="navbar-vertical-aside-has-menu {{ Request::is('admin/dispatch/*') ? 'active' : '' }}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link nav-link-toggle" href="javascript:"
@@ -382,6 +383,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                                 </li>
                             </ul>
                         </li>
+                        @endif
                         <!-- Order dispachment End-->
 
                         <!-- Order refund -->
@@ -1154,6 +1156,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                             </a>
                         </li>
 
+                        @if (Helpers::module_permission_check('deliveryman'))
                         <li
                             class="navbar-vertical-aside-has-menu {{ Request::is('admin/dm-disbursement*') ? 'active' : '' }}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"
@@ -1167,6 +1170,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                                     </span></span>
                             </a>
                         </li>
+                        @endif
                     @endif
 
 
@@ -1218,6 +1222,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                                         <span class="text-truncate">{{ translate('messages.restaurants') }}</span>
                                     </a>
                                 </li>
+                                @if (Helpers::module_permission_check('deliveryman'))
                                 <li
                                     class="navbar-vertical-aside-has-menu {{ Request::is('admin/report/disbursement-report/delivery_man') ? 'active' : '' }}">
                                     <a class="nav-link "
@@ -1227,6 +1232,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                                         <span class="text-truncate">{{ translate('messages.delivery_men') }}</span>
                                     </a>
                                 </li>
+                                @endif
 
                             </ul>
                         </li>
@@ -1375,6 +1381,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                             </a>
                         </li>
 
+                        @if (Helpers::module_permission_check('deliveryman'))
                         <li class="navbar-vertical-aside-has-menu @yield('deliveryman_earning_report') {{ Request::is('admin/report/deliveryman-earning-report*') ? 'active' : '' }}">
                             <a class="nav-link " href="{{ route('admin.report.deliveryman-earning-report') }}"
                                 title="{{ translate('Deliveryman_Earning_Report') }}">
@@ -1383,6 +1390,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                                     class="text-truncate text-capitalize">{{ translate('Deliveryman_Earning_Report') }}</span>
                             </a>
                         </li>
+                        @endif
                     @endif
 
 
@@ -1426,7 +1434,7 @@ $order_sch = Cache::rememberForever('order_scheduled_stats', function () {
                         </li>
                     @endif
                     <!-- provide_dm_earning -->
-                    @if (Helpers::module_permission_check('provide_dm_earning'))
+                    @if (Helpers::module_permission_check('provide_dm_earning') && Helpers::module_permission_check('deliveryman'))
                         <li
                             class="navbar-vertical-aside-has-menu {{ Request::is('admin/provide-deliveryman-earnings*') ? 'active' : '' }}">
                             <a class="js-navbar-vertical-aside-menu-link nav-link"

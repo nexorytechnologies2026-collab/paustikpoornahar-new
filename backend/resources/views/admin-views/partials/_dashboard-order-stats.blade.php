@@ -1,10 +1,10 @@
 <div class="col-sm-6 col-lg-3">
     <!-- Card -->
-    <a class="order--card h-100 order--card__color-1" href="{{route('admin.dispatch.list',['searching_for_deliverymen'])}}">
+    <a class="order--card h-100 order--card__color-1" href="{{route('admin.order.list', ['all'])}}">
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
                 <img src="{{dynamicAsset('assets/admin/img/dashboard/5.png')}}" alt="dashboard" class="oder--card-icon">
-                <span>{{translate('unassigned_orders')}}</span>
+                <span>{{translate('messages.Ongoing_Delivery_Orders')}}</span>
             </h6>
             <span class="card-title">
                 {{$data['searching_for_dm']}}
@@ -20,7 +20,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
                 <img src="{{dynamicAsset('assets/admin/img/dashboard/6.png')}}" alt="dashboard" class="oder--card-icon">
-                <span>{{translate('accepted_by_delivery_man')}}</span>
+                <span>{{translate('messages.Accepted_Orders')}}</span>
             </h6>
             <span class="card-title">
                 {{$data['accepted_by_dm']}}
@@ -52,7 +52,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="card-subtitle d-flex justify-content-between m-0 align-items-center">
                 <img src="{{dynamicAsset('assets/admin/img/dashboard/8.png')}}" alt="dashboard" class="oder--card-icon">
-                <span>{{translate('picked_up_by_delivery_man')}}</span>
+                <span>{{translate('messages.Out_For_Delivery')}}</span>
             </h6>
             <span class="card-title">
                 {{$data['picked_up']}}
