@@ -189,8 +189,8 @@
 <main id="content" role="main" class="pp-login">
     <section class="pp-login__visual" aria-hidden="true">
         <div class="pp-login__caption">
-            <div class="pp-login__eyebrow">{{ $role == 'vendor' ? translate('Restaurant Access') : translate('Staff Access') }}</div>
-            <h2 class="pp-login__headline">{{ translate('Homestyle meals,') }}<br>{{ translate('delivered with care.') }}</h2>
+            <div class="pp-login__eyebrow">{{ $role == 'vendor' ? translate('login_restaurant_access') : translate('login_staff_access') }}</div>
+            <h2 class="pp-login__headline">{{ translate('login_headline_line_1') }}<br>{{ translate('login_headline_line_2') }}</h2>
         </div>
     </section>
 
@@ -203,12 +203,12 @@
                      alt="{{ $app_name ?? 'Paustik Poornahar' }}">
             </a>
 
-            <h1 class="pp-login__title">{{ translate('Welcome Back!') }}</h1>
+            <h1 class="pp-login__title">{{ translate('login_welcome_back') }}</h1>
             <p class="pp-login__subtitle">
                 @if ($role == 'vendor')
-                    {{ translate('Sign in to manage your restaurant, menu, and orders.') }}
+                    {{ translate('login_subtitle_vendor') }}
                 @else
-                    {{ translate('Sign in to manage kitchens, orders, and deliveries.') }}
+                    {{ translate('login_subtitle_admin') }}
                 @endif
             </p>
 
@@ -220,7 +220,7 @@
                 <div class="pp-field">
                     <label for="signinSrEmail">{{ translate('messages.email') }}</label>
                     <input type="email" class="pp-input" value="{{ $email ?? '' }}" name="email" id="signinSrEmail"
-                           tabindex="1" placeholder="{{ translate('Enter your email') }}" autocomplete="username"
+                           tabindex="1" placeholder="{{ translate('enter_your_email') }}" autocomplete="username"
                            required data-msg="Please enter a valid email address.">
                 </div>
 
@@ -228,7 +228,7 @@
                     <label for="signupSrPassword">{{ translate('messages.password') }}</label>
                     <div class="pp-password">
                         <input type="password" class="pp-input js-toggle-password" name="password" id="signupSrPassword"
-                               value="{{ $password ?? '' }}" tabindex="2" placeholder="{{ translate('Enter your password') }}"
+                               value="{{ $password ?? '' }}" tabindex="2" placeholder="{{ translate('enter_your_password') }}"
                                autocomplete="current-password" required
                                data-msg="{{translate('messages.invalid_password_warning')}}"
                                data-hs-toggle-password-options='{
@@ -237,7 +237,7 @@
                                     "showClass": "tio-visible-outlined",
                                     "classChangeTarget": "#changePassIcon"
                                 }'>
-                        <a id="changePassTarget" class="pp-password__toggle" href="javascript:" aria-label="{{ translate('Show password') }}">
+                        <a id="changePassTarget" class="pp-password__toggle" href="javascript:" aria-label="{{ translate('show_password') }}">
                             <i id="changePassIcon" class="tio-visible-outlined"></i>
                         </a>
                     </div>
@@ -277,9 +277,9 @@
                         {{ translate('messages.remember_me') }}
                     </label>
                     @if ($role == 'admin')
-                        <button type="button" class="pp-forgot" data-toggle="modal" data-target="#forgetPassModal">{{ translate('Forget Password') }}</button>
+                        <button type="button" class="pp-forgot" data-toggle="modal" data-target="#forgetPassModal">{{ translate('forget_password_link') }}</button>
                     @elseif ($role == 'vendor')
-                        <button type="button" class="pp-forgot" data-toggle="modal" data-target="#forgetPassModal1">{{ translate('Forget Password') }}</button>
+                        <button type="button" class="pp-forgot" data-toggle="modal" data-target="#forgetPassModal1">{{ translate('forget_password_link') }}</button>
                     @endif
                 </div>
 
@@ -296,9 +296,9 @@
             <!-- End Form -->
 
             <div class="pp-footer">
-                <a href="{{ route('privacy-policy') }}" target="_blank" rel="noopener">{{ translate('Privacy Policy') }}</a>
+                <a href="{{ route('privacy-policy') }}" target="_blank" rel="noopener">{{ translate('privacy_policy_link') }}</a>
                 <span>/</span>
-                <a href="{{ route('delete-account') }}" target="_blank" rel="noopener">{{ translate('Delete Account') }}</a>
+                <a href="{{ route('delete-account') }}" target="_blank" rel="noopener">{{ translate('delete_account') }}</a>
             </div>
 
             @if(env('APP_MODE') =='demo' )

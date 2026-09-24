@@ -1,8 +1,7 @@
 @extends('layouts.landing.app')
-@section('title', translate('Delete Account'))
+@section('title', translate('delete_account'))
 
 @section('content')
-    @php($business_name = \App\CentralLogics\Helpers::get_business_settings('business_name') ?? 'Paustik Poornahar')
     @php($support_email = \App\CentralLogics\Helpers::get_business_settings('email_address'))
     @php($support_phone = \App\CentralLogics\Helpers::get_business_settings('phone'))
 
@@ -15,22 +14,22 @@
                 <div class="section-wrapper">
                     <div class="section-wrapper-inner">
                         <div class="section-header mw-100">
-                            <h2 class="title"> <span class="text-base">{{ translate('Delete Account') }}</span></h2>
+                            <h2 class="title"> <span class="text-base">{{ translate('delete_account') }}</span></h2>
                         </div>
                         <div class="about--content">
-                            <p>{{ translate('You can delete your') }} {{ $business_name }} {{ translate('account at any time.') }}</p>
+                            <p>{{ translate('delete_account_intro') }}</p>
 
-                            <h4>{{ translate('Delete from the app') }}</h4>
+                            <h4>{{ translate('delete_account_from_app') }}</h4>
                             <ol>
-                                <li>{{ translate('Open the app and sign in.') }}</li>
-                                <li>{{ translate('Go to Profile.') }}</li>
-                                <li>{{ translate('Tap Delete Account and confirm.') }}</li>
+                                <li>{{ translate('delete_account_step_1') }}</li>
+                                <li>{{ translate('delete_account_step_2') }}</li>
+                                <li>{{ translate('delete_account_step_3') }}</li>
                             </ol>
-                            <p>{{ translate('If you have an order that is still in progress, finish or cancel it first. The account can be deleted once no order is running.') }}</p>
+                            <p>{{ translate('delete_account_running_order_note') }}</p>
 
-                            <h4>{{ translate('Ask us to delete it') }}</h4>
+                            <h4>{{ translate('delete_account_ask_us') }}</h4>
                             <p>
-                                {{ translate('If you cannot use the app, contact us from your registered email or phone number and ask for your account to be deleted.') }}
+                                {{ translate('delete_account_ask_us_text') }}
                                 @if($support_email)
                                     <br>{{ translate('Email') }}: <a href="mailto:{{ $support_email }}">{{ $support_email }}</a>
                                 @endif
@@ -39,8 +38,8 @@
                                 @endif
                             </p>
 
-                            <h4>{{ translate('What is deleted') }}</h4>
-                            <p>{{ translate('Your profile, saved addresses, favourites and login details are removed. Records of past orders and payments may be kept where the law requires it for tax and accounting.') }}</p>
+                            <h4>{{ translate('delete_account_what_is_deleted') }}</h4>
+                            <p>{{ translate('delete_account_what_is_deleted_text') }}</p>
                         </div>
                     </div>
                 </div>

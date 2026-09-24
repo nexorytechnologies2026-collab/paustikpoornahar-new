@@ -27,6 +27,6 @@ RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-in
 COPY . .
 RUN composer dump-autoload --optimize --no-dev \
     && chmod +x docker/entrypoint.sh \
-    && chown -R www-data:www-data storage bootstrap/cache
+    && chown -R www-data:www-data storage bootstrap/cache resources/lang
 
 CMD ["docker/entrypoint.sh"]

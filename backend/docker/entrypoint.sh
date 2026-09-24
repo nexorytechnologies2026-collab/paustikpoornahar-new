@@ -19,6 +19,6 @@ php docker/railway-init.php
 php artisan storage:link --force >/dev/null 2>&1 || true
 php artisan view:cache >/dev/null 2>&1 || true
 
-chown -R www-data:www-data storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache resources/lang
 
 exec apache2-foreground
