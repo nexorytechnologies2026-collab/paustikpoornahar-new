@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/theme.minc619.css?v=1.0') }}">
     <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/sidebar-light.css') }}">
     <link  rel="stylesheet" href="{{dynamicAsset('assets/admin/plugins/lightbox/css/lightbox.css')}}">
     <!-- Provider Panel Update CSS -->
     <link rel="stylesheet" href="{{dynamicAsset('assets/admin/css/vendor.css')}}">

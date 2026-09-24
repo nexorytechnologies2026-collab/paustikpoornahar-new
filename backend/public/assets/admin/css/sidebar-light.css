@@ -1,0 +1,118 @@
+/*
+ * White sidebar for the admin and restaurant panels (Paustik Poornahar).
+ * Loaded after style.css so these rules win over the dark sidebar styles.
+ */
+:root {
+    --sb-bg: #ffffff;
+    --sb-border: #E8EBEE;
+    --sb-text: #3A4453;
+    --sb-muted: #8A94A6;
+    --sb-hover-bg: #F2F8F3;
+    --sb-active-bg: #E7F5EA;
+    --sb-active: #0B7F27;
+}
+
+/* Surfaces */
+.navbar-vertical-aside,
+.navbar-vertical-aside .navbar-vertical-container,
+.navbar-vertical-aside .navbar-brand-wrapper,
+.navbar-vertical-aside .navbar-vertical-content,
+.navbar-vertical-aside .bg-334257,
+.navbar-vertical-aside .nav-sub,
+.navbar-vertical-aside .sidebar--search-form,
+.navbar-vertical-aside .navbar-vertical-footer {
+    background: var(--sb-bg) !important;
+}
+.navbar-vertical-aside {
+    border-inline-end: 1px solid var(--sb-border) !important;
+}
+
+/* Section titles */
+.navbar-vertical-aside .nav-subtitle,
+.navbar-vertical-aside .nav-subtitle-replacer {
+    color: var(--sb-muted) !important;
+}
+
+/* Links, icons and labels */
+.navbar-vertical-aside .nav-link,
+.navbar-vertical-aside .nav-link .text-truncate,
+.navbar-vertical-aside .nav-link > span,
+.navbar-vertical-aside .nav-icon,
+.navbar-vertical-aside .nav-link i,
+.navbar-vertical-aside .nav-indicator-icon {
+    color: var(--sb-text) !important;
+}
+.navbar-vertical-aside .nav-link {
+    border-radius: 8px;
+}
+
+/* Hover */
+.navbar-vertical-aside .nav-link:hover,
+.navbar-vertical-aside .nav-link:hover .text-truncate,
+.navbar-vertical-aside .nav-link:hover > span,
+.navbar-vertical-aside .nav-link:hover .nav-icon,
+.navbar-vertical-aside .nav-link:hover i,
+.navbar-vertical-aside .nav-link:hover .nav-indicator-icon {
+    color: var(--sb-active) !important;
+}
+.navbar-vertical-aside .nav-link:hover {
+    background: var(--sb-hover-bg) !important;
+}
+
+/* Active item and open menus */
+.navbar-vertical-aside .active > .nav-link,
+.navbar-vertical-aside .nav-link.active,
+.navbar-vertical-aside .show > .nav-link {
+    background: var(--sb-active-bg) !important;
+    font-weight: 600;
+}
+.navbar-vertical-aside .active > .nav-link,
+.navbar-vertical-aside .active > .nav-link .text-truncate,
+.navbar-vertical-aside .active > .nav-link > span,
+.navbar-vertical-aside .active > .nav-link .nav-icon,
+.navbar-vertical-aside .active > .nav-link i,
+.navbar-vertical-aside .active > .nav-link .nav-indicator-icon,
+.navbar-vertical-aside .nav-link.active,
+.navbar-vertical-aside .nav-link.active .text-truncate,
+.navbar-vertical-aside .nav-link.active i,
+.navbar-vertical-aside .show > .nav-link,
+.navbar-vertical-aside .show > .nav-link .text-truncate,
+.navbar-vertical-aside .show > .nav-link i {
+    color: var(--sb-active) !important;
+}
+/* Sub-menu items: tint only the current page */
+.navbar-vertical-aside .nav-sub .nav-link {
+    background: transparent !important;
+    font-weight: 400;
+}
+.navbar-vertical-aside .nav-sub .active > .nav-link,
+.navbar-vertical-aside .nav-sub .nav-link.active {
+    background: var(--sb-active-bg) !important;
+    font-weight: 600;
+}
+
+/* Search box */
+.navbar-vertical-aside .sidebar--search-form .form-control {
+    background: #F7F8FA !important;
+    border: 1px solid var(--sb-border) !important;
+    color: var(--sb-text) !important;
+}
+.navbar-vertical-aside .sidebar--search-form .form-control::placeholder {
+    color: var(--sb-muted) !important;
+}
+.navbar-vertical-aside .sidebar--search-form .btn {
+    color: var(--sb-muted) !important;
+}
+
+/* Collapse / close buttons */
+.navbar-vertical-aside .navbar-vertical-aside-toggle,
+.navbar-vertical-aside .navbar-nav-wrap-content-left .close,
+.navbar-vertical-aside .navbar-nav-wrap-content-left i {
+    color: var(--sb-text) !important;
+    opacity: 1;
+}
+
+/* Scrollbar */
+.navbar-vertical-aside .navbar-vertical-content::-webkit-scrollbar-thumb {
+    background-color: #D5DAE0 !important;
+}

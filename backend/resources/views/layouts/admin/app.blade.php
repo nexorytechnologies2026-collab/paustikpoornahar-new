@@ -32,6 +32,7 @@ $countryCode = strtolower($country ?? 'auto');
     <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/emojionearea.min.css') }}">
     <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/theme.minc619.css?v=1.0') }}">
     <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/style.css') }}">
+    <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/sidebar-light.css') }}">
     <link rel="stylesheet" href="{{dynamicAsset('assets/admin/intltelinput/css/intlTelInput.css')}}">
     @stack('css_or_js')
     <link rel="stylesheet" href="{{ dynamicAsset('assets/admin/css/toastr.css') }}">
