@@ -125,7 +125,6 @@ class DashboardScreenState extends State<DashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool keyboardVisible = MediaQuery.of(context).viewInsets.bottom != 0;
     return PopScope(
       canPop: Navigator.canPop(context),
       onPopInvokedWithResult: (didPop, result) async{
@@ -159,38 +158,25 @@ class DashboardScreenState extends State<DashboardScreen> {
       child: Scaffold(
         key: _scaffoldKey,
 
-        floatingActionButton: GetBuilder<OrderController>(builder: (orderController) {
-          return ResponsiveHelper.isDesktop(context) || keyboardVisible ? const SizedBox() :
-          (orderController.showBottomSheet && orderController.runningOrderList != null && orderController.runningOrderList!.isNotEmpty && _isLogin)
-          ? const SizedBox.shrink() : Material(
-            elevation: 3,
-            shape: const CircleBorder(),
-            child: FloatingActionButton(
-              backgroundColor: _pageIndex == 2 ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
-              onPressed: () {
-                Get.toNamed(RouteHelper.getCartRoute());
-              },
-              child: CartWidget(color: _pageIndex == 2 ? Theme.of(context).cardColor : Theme.of(context).disabledColor, size: 30),
-            ),
-          );
-        }),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-
         bottomNavigationBar: ResponsiveHelper.isDesktop(context) ? const SizedBox() : GetBuilder<OrderController>(builder: (orderController) {
-          return (orderController.showBottomSheet && (orderController.runningOrderList != null && orderController.runningOrderList!.isNotEmpty && _isLogin)) ? const SizedBox() : SizedBox(
-            height: 70,
-            child: BottomAppBar(
-              elevation: 5,
-              notchMargin: 6,
-              clipBehavior: Clip.antiAlias,
-              shape: const CircularNotchedRectangle(),
-              shadowColor: Theme.of(context).disabledColor,
-              color: Theme.of(context).cardColor,
+          return (orderController.showBottomSheet && (orderController.runningOrderList != null && orderController.runningOrderList!.isNotEmpty && _isLogin)) ? const SizedBox() : SafeArea(
+            child: Container(
+              height: 64,
+              margin: const EdgeInsets.fromLTRB(Dimensions.paddingSizeDefault, 0, Dimensions.paddingSizeDefault, Dimensions.paddingSizeSmall),
+              padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: BorderRadius.circular(32),
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.08), blurRadius: 16, offset: const Offset(0, 4))],
+              ),
               child: Row(children: [
-                BottomNavItem(iconData: Icons.home, title: 'home'.tr, isSelected: _pageIndex == 0, onTap: () => _setPage(0)),
-                BottomNavItem(iconData: Icons.favorite, title: 'wishlist'.tr, isSelected: _pageIndex == 1, onTap: () => _setPage(1)),
-                const Expanded(child: SizedBox()),
-                BottomNavItem(iconData: Icons.shopping_bag, title: 'orders'.tr, isSelected: _pageIndex == 3, onTap: () => _setPage(3)),
+                BottomNavItem(iconData: _pageIndex == 0 ? Icons.home_rounded : Icons.home_outlined, title: 'home'.tr, isSelected: _pageIndex == 0, onTap: () => _setPage(0)),
+                BottomNavItem(iconData: _pageIndex == 1 ? Icons.favorite : Icons.favorite_border, title: 'wishlist'.tr, isSelected: _pageIndex == 1, onTap: () => _setPage(1)),
+                BottomNavItem(
+                  icon: CartWidget(color: _pageIndex == 2 ? Theme.of(context).textTheme.bodyLarge?.color : Colors.grey, size: 22),
+                  title: 'cart'.tr, isSelected: _pageIndex == 2, onTap: () => Get.toNamed(RouteHelper.getCartRoute()),
+                ),
+                BottomNavItem(iconData: _pageIndex == 3 ? Icons.shopping_bag : Icons.shopping_bag_outlined, title: 'orders'.tr, isSelected: _pageIndex == 3, onTap: () => _setPage(3)),
                 BottomNavItem(iconData: Icons.menu, title: 'menu'.tr, isSelected: _pageIndex == 4, onTap: () => _setPage(4)),
               ]),
             ),
