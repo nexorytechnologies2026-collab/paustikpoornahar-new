@@ -128,7 +128,7 @@
       </div>
 
       <span style="font-weight: bold;font-size: 16px;line-height: 135.5%;text-align: center;color: #182E4B; display:block; margin-bottom: 5px;">{{translate('messages.dear')}} {{$name}}</span>
-      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{__($status=='approved'?'messages.Thank_you_for_joinning_with':'messages.Thank_you_for_the_joinning_request_on')}} <span style="color: #EF7822;">{{$company_name}}!</span></span>
+      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{__($status=='approved'?'messages.Thank_you_for_joinning_with':'messages.Thank_you_for_the_joinning_request_on')}} <span style="color: #0E9E31;">{{$company_name}}!</span></span>
       <span style="font-weight: 400;font-size: 12px;line-height: 135.5%;color: #5D6774; display:block; margin-bottom:82px;">{{translate('messages.Your_registration_request_is_now_status',['status'=>translate('messages.'.$status)])}} @if ($status=='pending')
           {{translate('messages.Please_wait_untill_admin_aprroave_your_request')}}
       @endif </span>

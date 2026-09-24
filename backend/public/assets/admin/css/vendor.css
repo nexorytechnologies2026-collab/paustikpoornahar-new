@@ -1,7 +1,7 @@
 :root {
-    --title-clr: #334257;
-    --base-clr: #ef7822;
-    --primary-clr: #006fbd;
+    --title-clr: #0B3D1F;
+    --base-clr: #0E9E31;
+    --primary-clr: #0E9E31;
 }
 
 .navbar-brand-wrapper {
@@ -10,7 +10,7 @@
 
 @media screen and (min-width: 1200px) {
     .navbar-brand-wrapper {
-        background: #e9f3ff !important;
+        background: #E7F5EA !important;
         padding: 0 10px !important;
     }
 }
@@ -43,7 +43,7 @@
 .navbar-brand-wrapper .sidebar-logo-container .navbar-brand h6 {
     font-size: 14px;
     font-weight: 700;
-    color: #334257;
+    color: #0B3D1F;
     margin: 0;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -58,7 +58,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    color: #334257;
+    color: #0B3D1F;
 }
 
 .navbar-brand-wrapper .sidebar-logo-container .navbar-brand div span {
@@ -176,7 +176,7 @@
 }
 
 .bank--card {
-    background: rgba(51, 66, 87, 0.05);
+    background: rgba(11, 61, 31, 0.05);
     border-radius: 5px;
     width: 100%;
     max-width: 555px;
@@ -349,7 +349,7 @@
 .select2-container--default
     .select2-selection--multiple
     .select2-selection__choice {
-    background: #e9f3ff;
+    background: #E7F5EA;
     border-radius: 5px;
 }
 
@@ -505,7 +505,7 @@
 
 
 .more{
-    background-color: #006FBD;
+    background-color: #0E9E31;
     width: 24px;
     height: 24px;
     border-radius: 50%;
@@ -517,7 +517,7 @@
     text-align: center;
 }
 .pickup-zone-tag .select2-selection__rendered .name{
-    background-color: #e9f3ff !important;
+    background-color: #E7F5EA !important;
 }
 
 .custom-em .check-item{

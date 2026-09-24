@@ -90,17 +90,20 @@ if (!is_dir($storage . '/business')) {
     }
 }
 
-// Marker file on the volume means a later logo change in the admin panel is not overwritten on redeploy
-$brandLogo = base_path('installation/branding/logo.png');
-if (is_file($brandLogo)) {
-    $hash = md5_file($brandLogo);
-    $marker = $storage . '/business/.brand-logo-' . $hash;
+// Marker file on the volume means a later logo/icon change in the admin panel is not overwritten on redeploy
+foreach (['logo' => 'logo.png', 'icon' => 'icon.png'] as $settingKey => $file) {
+    $brandFile = base_path('installation/branding/' . $file);
+    if (!is_file($brandFile)) {
+        continue;
+    }
+    $hash = md5_file($brandFile);
+    $marker = $storage . '/business/.brand-' . $settingKey . '-' . $hash;
     if (!file_exists($marker)) {
         $name = date('Y-m-d') . '-' . substr($hash, 0, 13) . '.png';
         @mkdir($storage . '/business', 0775, true);
-        copy($brandLogo, $storage . '/business/' . $name);
-        Helpers::businessUpdateOrInsert(['key' => 'logo'], ['value' => $name]);
+        copy($brandFile, $storage . '/business/' . $name);
+        Helpers::businessUpdateOrInsert(['key' => $settingKey], ['value' => $name]);
         touch($marker);
-        say("brand logo applied: business/{$name}");
+        say("brand {$settingKey} applied: business/{$name}");
     }
 }

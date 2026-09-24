@@ -798,7 +798,7 @@
         // CSS for overlay hover
         // CSS for overlay hover
         // CSS for overlay hover
-        $('<style>.file_upload .overlay { display: flex !important; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; } .file_upload.has-image:hover .overlay { opacity: 1; pointer-events: auto; } .view-identity-image { background: #006fbd !important; color: white !important; border-color: #006fbd !important; }</style>')
+        $('<style>.file_upload .overlay { display: flex !important; opacity: 0; transition: opacity 0.3s ease; pointer-events: none; } .file_upload.has-image:hover .overlay { opacity: 1; pointer-events: auto; } .view-identity-image { background: #0E9E31 !important; color: white !important; border-color: #0E9E31 !important; }</style>')
             .appendTo('head');
 
         $('#deliveryman-form').on('submit', function(e) {

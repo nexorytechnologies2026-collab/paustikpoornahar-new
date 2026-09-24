@@ -17,8 +17,8 @@
             font-size: 16.809px;
             font-weight: 400;
             padding-block: 4px;
-            border-top: 1px solid #f7c446;
-            border-bottom: 1px solid #f7c446;
+            border-top: 1px solid #F9B802;
+            border-bottom: 1px solid #F9B802;
         }
         .qr-wrapper {
             padding: 70px 0px 0;
@@ -42,7 +42,7 @@
             background-repeat: no-repeat;
         }
         .qr-wrap-bottom-bg {
-            background-color: #27364B;
+            background-color: #082E1B;
             height: 52%;
             top: 48%;
         }
@@ -55,7 +55,7 @@
             margin: 0 auto;
         }
         .qr-wrapper .bottom-txt {
-            background-color: #2E3F55;
+            background-color: #0A3520;
             display: flex;
         }
         .qr-wrapper .bottom-txt > * {

@@ -3,7 +3,7 @@
         <div class="h-100 customer__card">
             <div class="card-body">
                 <div class="d-flex flex-sm-column gap-lg-20 gap--16">
-                    <div class="icon" data-bg-color="#0177CD">
+                    <div class="icon" data-bg-color="#0E9E31">
                         <img width="24" height="24"
                             src="{{dynamicAsset('assets/admin/img/customer-report/customer-group.png')}}"
                             alt="img" class="object--contain">
@@ -37,7 +37,7 @@
         <div class="h-100 customer__card">
             <div class="card-body d-flex flex-column gap-lg-20 gap--16">
                 <div class="d-flex align-items-center gap-xxl-16 gap--10">
-                    <div class="icon" data-bg-color="#0177CD">
+                    <div class="icon" data-bg-color="#0E9E31">
                         <img width="24" height="24"
                             src="{{dynamicAsset('assets/admin/img/customer-report/active-customer.png')}}"
                             alt="img" class="object--contain">
@@ -66,7 +66,7 @@
         <div class="h-100 customer__card">
             <div class="card-body d-flex flex-column gap-lg-20 gap--16">
                 <div class="d-flex align-items-center gap-xxl-16 gap--10">
-                    <div class="icon" data-bg-color="#0177CD">
+                    <div class="icon" data-bg-color="#0E9E31">
                         <img width="24" height="24"
                             src="{{dynamicAsset('assets/admin/img/customer-report/returning-customer.png')}}"
                             alt="img" class="object--contain">

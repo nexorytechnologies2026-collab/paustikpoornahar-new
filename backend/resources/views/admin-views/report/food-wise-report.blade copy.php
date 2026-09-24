@@ -531,9 +531,9 @@
                     // data: [65, 59, 80, 81, 56, 55, 40],
                     spanGaps: false,
                     data:[{{ implode(',', $data) }}],
-                    backgroundColor: "#7ECAFF",
-                    hoverBackgroundColor: "#7ECAFF",
-                    borderColor: "#7ECAFF",
+                    backgroundColor: "#86D49A",
+                    hoverBackgroundColor: "#86D49A",
+                    borderColor: "#86D49A",
                 }
             ]
         };

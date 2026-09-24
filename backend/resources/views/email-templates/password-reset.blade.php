@@ -123,9 +123,9 @@
       </div>
 
       <span style="font-weight: bold;font-size: 16px;line-height: 135.5%;text-align: center;color: #182E4B; display:block; margin-bottom: 5px;">{{translate('messages.dear')}} {{$name}}</span>
-      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{translate('A_request_has_been_received_to_change_password_for_your')}} <span style="color: #EF7822;">{{$company_name}}</span> {{translate('account')}}. <br> {{translate('Your_password_reset_token_is')}}:</span>
+      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{translate('A_request_has_been_received_to_change_password_for_your')}} <span style="color: #0E9E31;">{{$company_name}}</span> {{translate('account')}}. <br> {{translate('Your_password_reset_token_is')}}:</span>
       <span style="font-weight: 400;font-size: 12px;line-height: 135.5%;color: #5D6774; display:block; margin-bottom:82px;">
-        <span style="background: #EF7822;color: white;padding: 10px;font-size: large;border: 3px solid #EF7822;border-radius: 10px;">{{$token}} </span>
+        <span style="background: #0E9E31;color: white;padding: 10px;font-size: large;border: 3px solid #0E9E31;border-radius: 10px;">{{$token}} </span>
       </span>
       <span style="font-weight: 400;font-size: 12px;line-height: 135.5%;color: #5D6774;">{{translate('messages.If_you_require_any_assistance_or_have_feedback_or_suggestions_about_our_site,_you_can_email_us_at')}}
           <a href="mailto:{{$company_email}}" class="email">{{$company_email}}</a>

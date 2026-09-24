@@ -124,13 +124,13 @@
       </div>
 
       <span style="font-weight: bold;font-size: 16px;line-height: 135.5%;text-align: center;color: #182E4B; display:block; margin-bottom: 5px;">{{translate('messages.dear')}} {{$name}}</span>
-      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{translate('messages.Thank_you_for_joinning_with')}} <span style="color: #EF7822;">{{$company_name}}!</span></span>
+      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{translate('messages.Thank_you_for_joinning_with')}} <span style="color: #0E9E31;">{{$company_name}}!</span></span>
       <span style="font-weight: 400;font-size: 12px;line-height: 135.5%;color: #5D6774; display:block; margin-bottom:20px;">{{translate('messages.We_are_thrilled_to_have_you_with_us._Explore_more_foods_and_restaurant_and_enjoy_your_meal')}} </span>
       @if ($type)
-      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{translate('Default_login_password: ')}} <span style="color: #EF7822;">password</span></span>
+      <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:34px;">{{translate('Default_login_password: ')}} <span style="color: #0E9E31;">password</span></span>
       @endif
       @if ($company_links['web_app_url_status'])
-          <a href="{{$company_links['web_app_url']}}" target="_blank" style="width: 100px;height: 40px;left: 247px;top: 321px;background: #EF7822;border-radius: 5px; padding: 10px;text-decoration: none;color: white;">{{translate('messages.Buy_Now')}}</a>
+          <a href="{{$company_links['web_app_url']}}" target="_blank" style="width: 100px;height: 40px;left: 247px;top: 321px;background: #0E9E31;border-radius: 5px; padding: 10px;text-decoration: none;color: white;">{{translate('messages.Buy_Now')}}</a>
       @endif
       <span style="font-weight: 400;font-size: 12px;line-height: 135.5%;color: #5D6774;display:block;margin-top:43px;">{{translate('messages.If_you_require_any_assistance_or_have_feedback_or_suggestions_about_our_site,_you_can_email_us_at')}}
           <a href="mailto:{{$company_email}}" class="email">{{$company_email}}</a>

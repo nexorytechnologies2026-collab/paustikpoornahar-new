@@ -266,7 +266,7 @@ use App\CentralLogics\Helpers;
                         </div>
                         <div class="p-xxl-4 shadow-effect-hover d-flex align-items-center rounded-8 justify-content-between gap-2 p-15" data-bg-color="#FFF9F0">
                            <div>
-                                <h4 class="fs-16 m-0" data-text-color="#FFBB38">{{ $customer->loyalty_point ?? 0}}</h4>
+                                <h4 class="fs-16 m-0" data-text-color="#F9B802">{{ $customer->loyalty_point ?? 0}}</h4>
                                 <span class="fs-12" data-text-color="#656566">
                                       {{ translate('Loyalty Points') }}
                                 </span>

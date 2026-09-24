@@ -43,7 +43,7 @@
                                 <img src="{{dynamicAsset('assets/admin/img/order-icons/schedule.png')}}" alt="dashboard" class="oder--card-icon">
                                 <span>{{ translate('Scheduled_Orders') }}</span>
                             </h6>
-                            <span class="card-title" style="--base-clr:#0661CB">
+                            <span class="card-title" style="--base-clr:#0B7F27">
                                 {{ $total_scheduled_count }}
                             </span>
                         </div>
@@ -56,7 +56,7 @@
                                 <img src="{{dynamicAsset('assets/admin/img/order-icons/pending.png')}}" alt="dashboard" class="oder--card-icon">
                                 <span>{{ translate('Pending_Orders') }}</span>
                             </h6>
-                            <span class="card-title" style="--base-clr:#0661CB">
+                            <span class="card-title" style="--base-clr:#0B7F27">
                                 {{ $total_pending_count }}
                             </span>
                         </div>
@@ -69,7 +69,7 @@
                                 <img src="{{dynamicAsset('assets/admin/img/order-icons/accepted.png')}}" alt="dashboard" class="oder--card-icon">
                                 <span>{{ translate('Accepted_Orders') }}</span>
                             </h6>
-                            <span class="card-title" style="--base-clr:#0661CB">
+                            <span class="card-title" style="--base-clr:#0B7F27">
                                 {{ $total_accepted_count }}
                             </span>
                         </div>
@@ -121,7 +121,7 @@
                                 <img src="{{dynamicAsset('assets/admin/img/order-icons/canceled.png')}}" alt="dashboard" class="oder--card-icon">
                                 <span>{{ translate('Canceled') }}</span>
                             </h6>
-                            <span class="card-title" style="--base-clr:#FF7500">
+                            <span class="card-title" style="--base-clr:#0E9E31">
                                 {{ $total_canceled_count }}
                             </span>
                         </div>
@@ -134,7 +134,7 @@
                                 <img src="{{dynamicAsset('assets/admin/img/order-icons/failed.png')}}" alt="dashboard" class="oder--card-icon">
                                 <span>{{ translate('Payment_Failed') }}</span>
                             </h6>
-                            <span class="card-title" style="--base-clr:#FF7500">
+                            <span class="card-title" style="--base-clr:#0E9E31">
                                 {{ $total_failed_count }}
                             </span>
                         </div>
@@ -147,7 +147,7 @@
                                 <img src="{{dynamicAsset('assets/admin/img/order-icons/refunded.png')}}" alt="dashboard" class="oder--card-icon">
                                 <span>{{ translate('Refunded') }}</span>
                             </h6>
-                            <span class="card-title" style="--base-clr:#FF7500">
+                            <span class="card-title" style="--base-clr:#0E9E31">
                                 {{ $total_refunded_count }}
                             </span>
                         </div>

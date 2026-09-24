@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorConverter{
   static Color stringToColor(String? color){
-    int value = 0xFFEF7822;
+    int value = 0xFF0E9E31;
     if(color != null) {
       value = int.parse(color.replaceAll('#', '0xFF'));
     }

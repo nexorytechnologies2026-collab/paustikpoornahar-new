@@ -511,7 +511,7 @@
             type: 'warning',
             showCancelButton: true,
             cancelButtonColor: 'default',
-            confirmButtonColor: '#FC6A57',
+            confirmButtonColor: '#0E9E31',
             cancelButtonText: '{{ translate('messages.No') }}',
             confirmButtonText: '{{ translate('messages.Yes') }}',
             reverseButtons: true
@@ -531,7 +531,7 @@
             type: 'warning',
             showCancelButton: true,
             cancelButtonColor: 'default',
-            confirmButtonColor: '#FC6A57',
+            confirmButtonColor: '#0E9E31',
             cancelButtonText: '{{ translate('messages.no') }}',
             confirmButtonText: '{{ translate('messages.Yes') }}',
             reverseButtons: true
@@ -875,7 +875,7 @@
         title: '{{ translate('Do you want to logout?') }}',
         showDenyButton: true,
         showCancelButton: true,
-        confirmButtonColor: '#FC6A57',
+        confirmButtonColor: '#0E9E31',
         cancelButtonColor: '#363636',
         confirmButtonText: `{{ translate('yes')}}`,
         cancelButtonText: `{{ translate('cancel')}}`,

@@ -350,7 +350,7 @@
                 title: '{{translate('Are_you_sure?')}}?',
                 text: "{{translate('a_test_mail_will_be_sent_to_your_email')}}!",
                 showCancelButton: true,
-                confirmButtonColor: '#377dff',
+                confirmButtonColor: '#0E9E31',
                 cancelButtonColor: 'secondary',
                 confirmButtonText: '{{translate('Yes')}}!'
             }).then((result) => {

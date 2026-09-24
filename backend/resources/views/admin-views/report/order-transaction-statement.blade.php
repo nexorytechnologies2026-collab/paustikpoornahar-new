@@ -59,7 +59,7 @@
         }
 
         table.customers thead th {
-            background-color: #0177CD;
+            background-color: #0E9E31;
             color: #fff;
         }
 
@@ -293,9 +293,9 @@
         <table class="customers bs-0">
             <thead>
                 <tr>
-                    <th style="background-color: #ff7500 important">{{translate('sl')}}</th>
-                    <th style="background-color: #ff7500 important">{{translate('details')}}</th>
-                    <th style="background-color: #ff7500 important">{{translate('amount')}}</th>
+                    <th style="background-color: #0E9E31 important">{{translate('sl')}}</th>
+                    <th style="background-color: #0E9E31 important">{{translate('details')}}</th>
+                    <th style="background-color: #0E9E31 important">{{translate('amount')}}</th>
                 </tr>
             </thead>
 

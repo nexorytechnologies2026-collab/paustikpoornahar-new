@@ -59,7 +59,7 @@
         }
 
         table.customers thead th {
-            background-color: #0177CD;
+            background-color: #0E9E31;
             color: #fff;
         }
 

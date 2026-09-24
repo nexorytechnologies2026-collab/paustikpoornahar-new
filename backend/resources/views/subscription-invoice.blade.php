@@ -76,8 +76,8 @@
         .trx-invoice table.customers thead th {
             background-color: #f5fbff;
             color: #222;
-            border-top: 1px solid #d6ebff;
-            border-bottom: 1px solid #d6ebff;
+            border-top: 1px solid #D2EEDA;
+            border-bottom: 1px solid #D2EEDA;
             padding-top: 10px;
         }
         .trx-invoice table.customers tbody th {
@@ -137,7 +137,7 @@
         .__subscribe-table thead tr th {
             font-size: 13px;
             font-weight: 500;
-            color: rgba(51, 66, 87, 1);
+            color: rgba(11, 61, 31, 1);
             background: rgba(16, 121, 128, 0.08);
         }
 
@@ -231,7 +231,7 @@
                             <div class="mb-1 fz-10" style="white-space: nowrap">
                                 <span class="text-dark">{{translate('invoice_of')}}</span> <span class="font-normal">({{  App\CentralLogics\Helpers::currency_code() }})</span>
                             </div>
-                            <div class="text-right" style="font-size: 24px;font-weight:800;color:#ff8a00;white-space:nowrap;">{{  App\CentralLogics\Helpers::format_currency($transaction->paid_amount)  }}</div>
+                            <div class="text-right" style="font-size: 24px;font-weight:800;color:#0E9E31;white-space:nowrap;">{{  App\CentralLogics\Helpers::format_currency($transaction->paid_amount)  }}</div>
                         </td>
                     </tr>
                     <tr>

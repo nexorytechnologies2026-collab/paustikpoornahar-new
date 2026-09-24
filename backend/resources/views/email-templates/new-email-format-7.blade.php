@@ -26,7 +26,7 @@
             min-height: 100vh;
         }
         h1,h2,h3,h4,h5,h6 {
-            color: #334257;
+            color: #0B3D1F;
         }
         * {
             box-sizing: border-box
@@ -89,7 +89,7 @@
         }
         .privacy a {
             text-decoration: none;
-            color: #334257;
+            color: #0B3D1F;
             position: relative;
             margin-left: auto;
             margin-right: auto;
@@ -98,7 +98,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: #334257;
+            background: #0B3D1F;
             display: inline-block;
             margin: 0 7px;
         }

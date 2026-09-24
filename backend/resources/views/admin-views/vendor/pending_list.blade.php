@@ -338,7 +338,7 @@
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
-                confirmButtonColor: '#FC6A57',
+                confirmButtonColor: '#0E9E31',
                 cancelButtonText: '{{ translate('no') }}',
                 confirmButtonText: '{{ translate('yes') }}',
                 reverseButtons: true
@@ -360,7 +360,7 @@
                 type: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: 'default',
-                confirmButtonColor: '#FC6A57',
+                confirmButtonColor: '#0E9E31',
                 cancelButtonText: "{{translate('messages.no')}}",
                 confirmButtonText: "{{translate('messages.yes')}}",
                 reverseButtons: true

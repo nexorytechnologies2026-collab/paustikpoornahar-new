@@ -21,7 +21,7 @@
             padding: 0 !important;
             margin: 0 !important;
             background: #f7fbff;
-            color: #334257;
+            color: #0B3D1F;
             font-size: 13px;
             line-height: 1.5;
             display: flex;align-items: center;justify-content: center;
@@ -50,7 +50,7 @@
         }
         .privacy a {
             text-decoration: none;
-            color: #334257;
+            color: #0B3D1F;
             position: relative;
             margin-left: auto;
             margin-right: auto;
@@ -59,7 +59,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: #334257;
+            background: #0B3D1F;
             display: inline-block;
             margin: 0 7px;
         }
@@ -116,12 +116,12 @@
             <td style="padding:0 30px 30px; text-align:left">
                 <span style="font-weight:500;display:block;margin: 20px 0 11px;" id="mail-body">{!! $body??'Please click the link below to change your password' !!}</span>
                 {{-- <span style="display:block;margin-bottom:14px">
-                    Please click <a href="" style="font-weight:500;color:#0177CD">Here</a>  or click the link below to change your password
+                    Please click <a href="" style="font-weight:500;color:#0E9E31">Here</a>  or click the link below to change your password
                 </span> --}}
                 @if (isset($url))
                 <span style="display:block;margin-bottom:14px">
                     {{-- <span style="display:block" id="mail-button">{{ $data['button_name']??'Click Here' }}</span> --}}
-                    <a href="{{ $url }}" style="color: #0177CD">{{ $url }}</a>
+                    <a href="{{ $url }}" style="color: #0E9E31">{{ $url }}</a>
                 </span>
                 @endif
                 @if ($data?->button_url)

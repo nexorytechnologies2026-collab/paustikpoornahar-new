@@ -137,7 +137,7 @@
 }
 
 .page-item.active .page-link {
-    background-color: #377dff !important;
+    background-color: #0E9E31 !important;
 }
 
 ol.breadcrumb {
@@ -193,7 +193,7 @@ ol.breadcrumb {
     position: relative;
 }
 .select-box:hover {
-    border-color: #377dff;
+    border-color: #0E9E31;
 }
 .dropdown-list {
     display: none;

@@ -14,7 +14,7 @@
             height: 100% !important;
             padding: 0 !important;
             margin: 0 !important;
-            color: #334257;
+            color: #0B3D1F;
             font-size: 13px;
             line-height: 1.5;
             display: flex;align-items: center;justify-content: center;
@@ -41,7 +41,7 @@
         }
         .privacy a {
             text-decoration: none;
-            color: #334257;
+            color: #0B3D1F;
             position: relative;
         }
         .privacy a:not(:last-child)::after {
@@ -49,7 +49,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: #334257;
+            background: #0B3D1F;
             display: inline-block;
             margin: 0 15px
         }

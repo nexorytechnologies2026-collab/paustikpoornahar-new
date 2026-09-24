@@ -165,7 +165,7 @@
                                     title: `{{ translate('messages.Do_You_Want_To_Sign_Out_?') }}`,
                                     showDenyButton: true,
                                     showCancelButton: true,
-                                    confirmButtonColor: `#FC6A57`,
+                                    confirmButtonColor: `#0E9E31`,
                                     cancelButtonColor: `#363636`,
                                     confirmButtonText: `{{ translate('messages.Yes') }}`,
                                     cancelButtonText: `{{ translate('messages.cancel') }}`,

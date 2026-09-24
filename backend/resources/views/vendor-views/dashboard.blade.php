@@ -153,14 +153,14 @@
                                         "labels": ["{{ translate('messages.Jan') }}","{{ translate('messages.Feb') }}","{{ translate('messages.Mar') }}","{{ translate('messages.April') }}","{{ translate('messages.May') }}","{{ translate('messages.Jun') }}","{{ translate('messages.Jul') }}","{{ translate('messages.Aug') }}","{{ translate('messages.Sep') }}","{{ translate('messages.Oct') }}","{{ translate('messages.Nov') }}","{{ translate('messages.Dec') }}"],
                                         "datasets": [{
                                         "data": [{{$earning[1]}},{{$earning[2]}},{{$earning[3]}},{{$earning[4]}},{{$earning[5]}},{{$earning[6]}},{{$earning[7]}},{{$earning[8]}},{{$earning[9]}},{{$earning[10]}},{{$earning[11]}},{{$earning[12]}}],
-                                        "backgroundColor": "#7ECAFF",
-                                        "hoverBackgroundColor": "#7ECAFF",
-                                        "borderColor": "#7ECAFF"
+                                        "backgroundColor": "#86D49A",
+                                        "hoverBackgroundColor": "#86D49A",
+                                        "borderColor": "#86D49A"
                                     },
                                     {
                                         "data": [{{$commission[1]}},{{$commission[2]}},{{$commission[3]}},{{$commission[4]}},{{$commission[5]}},{{$commission[6]}},{{$commission[7]}},{{$commission[8]}},{{$commission[9]}},{{$commission[10]}},{{$commission[11]}},{{$commission[12]}}],
-                                        "backgroundColor": "#0661CB",
-                                        "borderColor": "#0661CB"
+                                        "backgroundColor": "#0B7F27",
+                                        "borderColor": "#0B7F27"
                                     }]
                                     },
                                     "options": {

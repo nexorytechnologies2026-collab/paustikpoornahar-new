@@ -115,9 +115,9 @@
       <div class="congrats-box">
           <span style="font-weight: 700;font-size: 22px;line-height: 135.5%; display:block; margin-bottom:10px;">{{translate('messages.Transaction Sucessfull')}}</span>
           <span style="font-weight: 400;font-size: 16px;line-height: 135.5%; color:#727272; margin-bottom:7px; display:block;">{{translate('messages.amount sucessfully credited to your wallet',['amount'=>$data->credit.' '.\App\CentralLogics\Helpers::currency_code()])}}</span>
-          <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:10px;"><span style="font-weight: 700;font-size: 14px;line-height: 18.79px;color: #182E4B;color: #EF7822;">{{translate('messages.note')}}: </span>{{in_array($data->transaction_type,$note_message)?$note_message[$data->transaction_type]:translate('messages.add_fund_to_wallet')}} </span>
+          <span style="font-weight: 400;font-size: 14px;line-height: 135.5%;color: #182E4B;display:block; margin-bottom:10px;"><span style="font-weight: 700;font-size: 14px;line-height: 18.79px;color: #182E4B;color: #0E9E31;">{{translate('messages.note')}}: </span>{{in_array($data->transaction_type,$note_message)?$note_message[$data->transaction_type]:translate('messages.add_fund_to_wallet')}} </span>
           <span style="font-weight: 700;font-size: 14px;line-height: 135.5%;color: #182E4B; display:block; margin-bottom: 5px;">{{translate('messages.dear')}} {{$data->user->f_name.' '.$data->user->l_name}}</span>
-          <span style="font-weight: 400;font-size: 12px;line-height: 135.5%;text-align: center;color: #182E4B;display:block; margin-bottom:34px;">{{translate('messages.Thank_you_for_joinning_with')}} <span style="color: #EF7822;">{{$company_name}}!</span></span>
+          <span style="font-weight: 400;font-size: 12px;line-height: 135.5%;text-align: center;color: #182E4B;display:block; margin-bottom:34px;">{{translate('messages.Thank_you_for_joinning_with')}} <span style="color: #0E9E31;">{{$company_name}}!</span></span>
       </div>
 
       <div style="background-color: #F5F5F5; width: 90%;margin:auto;margin-top:30px;padding: 10px 20px 20px 5px;">

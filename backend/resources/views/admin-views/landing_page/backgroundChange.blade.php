@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-12">
                             <label  for="primary_1_hex" class="form-label d-block text-center">{{ translate('Primary_Color') }}</label>
-                            <input  id="primary_1_hex" name="header-bg" type="color" class="form-control form-control-color" value="{{ data_get($backgroundChange,'primary_1_hex','#EF7822') }}" required>
+                            <input  id="primary_1_hex" name="header-bg" type="color" class="form-control form-control-color" value="{{ data_get($backgroundChange,'primary_1_hex','#0E9E31') }}" required>
                         </div>
 {{--                        <div class="col-sm-6">--}}
 {{--                            <label for="primary_2_hex"  class="form-label d-block text-center">{{ translate('Primary_Color_2') }}</label>--}}

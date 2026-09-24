@@ -77,7 +77,7 @@
         .invoice-body-top h6 {
             font-size: 16px;
             margin: 0;
-            color: #1455AC;
+            color: #0B7F27;
         }
 
         .invoice-body-top .subtxt {
@@ -102,14 +102,14 @@
 
         .table tr td,
         .table tr th {
-            border-bottom: 1px solid #D6EBFF;
+            border-bottom: 1px solid #D2EEDA;
             padding: 13px;
             text-align: start;
             vertical-align: top;
         }
 
         .table tr th {
-            border-top: 1px solid #D6EBFF;
+            border-top: 1px solid #D2EEDA;
             background: #F5FBFF;
             text-transform: uppercase;
             font-size: 9px;
@@ -237,7 +237,7 @@
                     <td class="text-right">
                         <div class="ml-auto text-right">
                             <div class="subtxt">{{ translate('total_amount') }}</div>
-                            <div style="font-size: 16px;margin: 0;color: #1455AC;">{{\App\CentralLogics\Helpers::format_currency($disbursement['total_amount'])}}</div>
+                            <div style="font-size: 16px;margin: 0;color: #0B7F27;">{{\App\CentralLogics\Helpers::format_currency($disbursement['total_amount'])}}</div>
                         </div>
                     </td>
                 </tr>

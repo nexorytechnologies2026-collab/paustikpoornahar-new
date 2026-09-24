@@ -2833,7 +2833,7 @@ $max_processing_time = $order->restaurant?explode('-', $order->restaurant['deliv
                 ,
                 showCancelButton: true,
                 cancelButtonColor: 'default',
-                confirmButtonColor: '#FC6A57',
+                confirmButtonColor: '#0E9E31',
                 cancelButtonText: '{{ translate('messages.no') }}',
                 confirmButtonText: '{{ translate('messages.yes') }}',
                 reverseButtons: true,
