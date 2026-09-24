@@ -27,208 +27,302 @@
     <link rel="stylesheet" href="{{dynamicAsset('assets/admin')}}/css/theme.minc619.css?v=1.0">
     <link rel="stylesheet" href="{{dynamicAsset('assets/admin')}}/css/style.css">
     <link rel="stylesheet" href="{{dynamicAsset('assets/admin')}}/css/toastr.css">
+    <style>
+        :root {
+            --pp-red: #BE0A24;
+            --pp-red-dark: #9E0820;
+            --pp-ink: #111418;
+            --pp-muted: #6B7280;
+            --pp-border: #E3E6EA;
+        }
+        html, body { height: 100%; }
+        body { background: #fff; font-family: "Poppins", sans-serif; }
+
+        .pp-login { display: flex; min-height: 100vh; }
+
+        /* Left: photo panel. Drop the photo at public/assets/admin/img/login-bg.jpg */
+        .pp-login__visual {
+            position: relative;
+            flex: 0 0 52.5%;
+            background-color: #1b1d1f;
+            background-image:
+                linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .65) 100%),
+                url("{{ dynamicAsset('assets/admin/img/login-bg.jpg') }}"),
+                radial-gradient(rgba(255, 255, 255, .16) 1.2px, transparent 1.3px);
+            background-size: cover, cover, 6px 6px;
+            background-position: center, center, 0 0;
+            filter: grayscale(1);
+            overflow: hidden;
+        }
+        .pp-login__caption {
+            position: absolute;
+            inset-inline-start: 38px;
+            bottom: 40px;
+            color: #fff;
+            filter: none;
+        }
+        .pp-login__eyebrow {
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            opacity: .85;
+            margin-bottom: 14px;
+        }
+        .pp-login__headline {
+            font-size: 42px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            margin: 0;
+            color: #fff;
+        }
+
+        /* Right: form panel */
+        .pp-login__panel {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 48px 24px;
+        }
+        .pp-login__form { width: 100%; max-width: 384px; }
+        .pp-login__logo { display: inline-block; margin-bottom: 36px; }
+        .pp-login__logo img { width: 236px; max-width: 100%; height: auto; }
+        .pp-login__title {
+            font-size: 34px;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -.02em;
+            color: var(--pp-ink);
+            margin: 0 0 10px;
+        }
+        .pp-login__subtitle { font-size: 15px; color: var(--pp-muted); margin: 0 0 36px; }
+
+        .pp-field { margin-bottom: 22px; }
+        .pp-field label { display: block; font-size: 13px; font-weight: 500; color: var(--pp-ink); margin-bottom: 8px; }
+        .pp-input {
+            width: 100%;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid var(--pp-border);
+            border-radius: 12px;
+            font-size: 14px;
+            color: var(--pp-ink);
+            background: #fff;
+            transition: border-color .15s, box-shadow .15s;
+        }
+        .pp-input::placeholder { color: #8A9099; }
+        .pp-input:focus { outline: none; border-color: #0E9E31; box-shadow: 0 0 0 3px rgba(14, 158, 49, .12); }
+        .pp-password { position: relative; }
+        .pp-password .pp-input { padding-inline-end: 48px; }
+        .pp-password__toggle {
+            position: absolute;
+            inset-inline-end: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4B5563;
+            font-size: 18px;
+            border-radius: 8px;
+        }
+        .pp-password__toggle:hover { background: #F3F4F6; color: var(--pp-ink); }
+
+        /* Built-in captcha, also styles the markup that reload-captcha swaps in */
+        .pp-captcha { display: flex; gap: 10px; margin: -4px 0 22px; }
+        .pp-captcha > div { flex: 1 1 50%; max-width: none; padding: 0; background: transparent !important; }
+        .pp-captcha .form-control { height: 48px; border: 1px solid var(--pp-border) !important; border-radius: 12px; font-size: 14px; }
+        .pp-captcha img { height: 48px; border: 1px solid var(--pp-border); border-radius: 12px !important; object-fit: cover; }
+        .pp-captcha .reloadCaptcha, .pp-captcha #reloadCaptcha { display: flex; align-items: center; padding: 0 0 0 8px !important; cursor: pointer; color: var(--pp-muted); }
+
+        .pp-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+        .pp-check { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #4B5563; cursor: pointer; margin: 0; }
+        .pp-check input { width: 15px; height: 15px; accent-color: var(--pp-red); margin: 0; }
+        .pp-forgot { font-size: 13px; font-weight: 500; color: var(--pp-red); cursor: pointer; background: none; border: 0; padding: 0; }
+        .pp-forgot:hover { color: var(--pp-red-dark); text-decoration: underline; }
+
+        .pp-btn {
+            display: block;
+            width: 100%;
+            height: 50px;
+            border: 0;
+            border-radius: 999px;
+            background: var(--pp-red);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background .15s, transform .05s;
+        }
+        .pp-btn:hover { background: var(--pp-red-dark); }
+        .pp-btn:active { transform: translateY(1px); }
+        .pp-btn:focus-visible { outline: 3px solid rgba(190, 10, 36, .3); outline-offset: 2px; }
+
+        .pp-switch { text-align: center; font-size: 13px; color: var(--pp-muted); margin: 18px 0 0; }
+        .pp-switch a { color: #0E9E31; font-weight: 600; }
+        .pp-footer { text-align: center; font-size: 12px; color: var(--pp-muted); margin-top: 28px; }
+        .pp-footer a { color: var(--pp-muted); }
+        .pp-footer a:hover { color: var(--pp-ink); }
+        .pp-footer span { margin: 0 8px; opacity: .6; }
+
+        .pp-demo { margin-top: 20px; padding: 12px 14px; border: 1px dashed var(--pp-border); border-radius: 12px; font-size: 13px; }
+
+        @media (max-width: 991px) {
+            .pp-login__visual { display: none; }
+            .pp-login__panel { padding: 40px 16px; }
+        }
+        @media (max-width: 480px) {
+            .pp-login__title { font-size: 28px; }
+            .pp-login__logo img { width: 190px; }
+        }
+    </style>
 </head>
 
 <body>
 <!-- ========== MAIN CONTENT ========== -->
-<main id="content" role="main" class="main auth-bg">
-    <!-- Content -->
-    <div class="d-flex flex-wrap align-items-center justify-content-between">
-        <div class="auth-content">
-            <div class="content">
-                <h2 class="title text-uppercase">{{translate('messages.welcome_to')}} {{ $app_name??'PAUSTIK POORNAHAR' }}</h2>
-                <p>
-                    {{translate('Manage_your_app_&_website_easily')}}
-                </p>
-            </div>
+@php($role = $role ?? null)
+@php($systemlogo = \App\Models\BusinessSetting::where(['key' => 'logo'])->first())
+@php($recaptcha = \App\CentralLogics\Helpers::get_business_settings('recaptcha'))
+<main id="content" role="main" class="pp-login">
+    <section class="pp-login__visual" aria-hidden="true">
+        <div class="pp-login__caption">
+            <div class="pp-login__eyebrow">{{ $role == 'vendor' ? translate('Restaurant Access') : translate('Staff Access') }}</div>
+            <h2 class="pp-login__headline">{{ translate('Homestyle meals,') }}<br>{{ translate('delivered with care.') }}</h2>
         </div>
-        <div class="auth-wrapper">
-            <div class="auth-wrapper-body auth-form-appear">
-                @php($systemlogo=\App\Models\BusinessSetting::where(['key'=>'logo'])->first())
-                @php($role = $role ?? null )
-                <a class="auth-logo mb-5" href="javascript:">
-                    <img class="z-index-2 onerror-image"
-                    src="{{ \App\CentralLogics\Helpers::get_full_url('business',$systemlogo?->value,$systemlogo?->storage[0]?->value ?? 'public', 'authfav') }}"
-                    data-onerror-image="{{ dynamicAsset('assets/admin/img/auth-fav.png') }}" alt="image">
-                </a>
-                <div class="text-center">
-                    <div class="auth-header mb-5">
-                        @if ($role == 'vendor')
-                        <h2 class="signin-txt">{{ translate('messages.Signin_To_Your_Restaurant_Panel')}}</h2>
-                        @else
+    </section>
 
-                        <h2 class="signin-txt">{{ translate('messages.Signin_To_Your_Panel')}}</h2>
-                        @endif
+    <section class="pp-login__panel">
+        <div class="pp-login__form auth-form-appear">
+            <a class="pp-login__logo" href="javascript:">
+                <img class="onerror-image"
+                     src="{{ \App\CentralLogics\Helpers::get_full_url('business', $systemlogo?->value, $systemlogo?->storage[0]?->value ?? 'public', 'authfav') }}"
+                     data-onerror-image="{{ dynamicAsset('assets/admin/img/logo.png') }}"
+                     alt="{{ $app_name ?? 'Paustik Poornahar' }}">
+            </a>
+
+            <h1 class="pp-login__title">{{ translate('Welcome Back!') }}</h1>
+            <p class="pp-login__subtitle">
+                @if ($role == 'vendor')
+                    {{ translate('Sign in to manage your restaurant, menu, and orders.') }}
+                @else
+                    {{ translate('Sign in to manage kitchens, orders, and deliveries.') }}
+                @endif
+            </p>
+
+            <!-- Form -->
+            <form class="login_form" action="{{route('login_post')}}" method="post" id="form-id">
+                @csrf
+                <input type="hidden" name="role" value="{{ $role }}">
+
+                <div class="pp-field">
+                    <label for="signinSrEmail">{{ translate('messages.email') }}</label>
+                    <input type="email" class="pp-input" value="{{ $email ?? '' }}" name="email" id="signinSrEmail"
+                           tabindex="1" placeholder="{{ translate('Enter your email') }}" autocomplete="username"
+                           required data-msg="Please enter a valid email address.">
+                </div>
+
+                <div class="pp-field">
+                    <label for="signupSrPassword">{{ translate('messages.password') }}</label>
+                    <div class="pp-password">
+                        <input type="password" class="pp-input js-toggle-password" name="password" id="signupSrPassword"
+                               value="{{ $password ?? '' }}" tabindex="2" placeholder="{{ translate('Enter your password') }}"
+                               autocomplete="current-password" required
+                               data-msg="{{translate('messages.invalid_password_warning')}}"
+                               data-hs-toggle-password-options='{
+                                    "target": "#changePassTarget",
+                                    "defaultClass": "tio-hidden-outlined",
+                                    "showClass": "tio-visible-outlined",
+                                    "classChangeTarget": "#changePassIcon"
+                                }'>
+                        <a id="changePassTarget" class="pp-password__toggle" href="javascript:" aria-label="{{ translate('Show password') }}">
+                            <i id="changePassIcon" class="tio-visible-outlined"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="multi-language-change position-absolute start-0 top-0 mt-2">
-                    {{-- <select name="" id="" class="custom-select py-1 w-auto h-32px min-w-135px">
-                        <option value="1">English</option>
-                        <option value="1">Spanish</option>
-                        <option value="1">English</option>
-                        <option value="1">English</option>
-                    </select> --}}
-
-
-                </div>
-                <!-- Content -->
-                <label class="badge badge-soft-success float-right initial-1">
-                    {{translate('messages.software_version')}} : {{env('SOFTWARE_VERSION')}}
-                </label>
-                <!-- Form -->
-                <form class="login_form" action="{{route('login_post')}}" method="post" id="form-id">
-                    @csrf
-                    <input type="hidden" name="role" value="{{  $role ?? null }}">
-
-                    <div class="__bg-F8F9FC-card mb-20">
-                        <!-- Form Group -->
-                        <div class="js-form-message form-group mb-3">
-                            <label class="form-label text-capitalize" for="signinSrEmail">{{translate('messages.your_email')}}</label>
-                            <input type="email" class="form-control form-control-lg" value="{{ $email ?? '' }}" name="email" id="signinSrEmail"
-                                tabindex="1" aria-label="email@address.com"
-                                required data-msg="Please enter a valid email address.">
-                            <div class="focus-effects"></div>
+                @if(isset($recaptcha) && $recaptcha['status'] == 1)
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                    <input type="hidden" name="set_default_captcha" id="set_default_captcha_value" value="0">
+                    <div class="pp-captcha d-none" id="reload-captcha">
+                        <div>
+                            <input type="text" class="form-control" name="custome_recaptcha" id="custome_recaptcha" required
+                                   placeholder="{{translate('Enter recaptcha value')}}" autocomplete="off"
+                                   value="{{env('APP_MODE')=='dev'? session('six_captcha'):''}}">
                         </div>
-                        <!-- End Form Group -->
-                        <!-- Form Group -->
-                        <div class="js-form-message form-group">
-                            <label class="form-label text-capitalize" for="signupSrPassword" tabindex="0">
-                                <span class="d-flex justify-content-between align-items-center">
-                                {{translate('messages.password')}}
-                                </span>
-                            </label>
-                            <div class="input-group input-group-merge">
-                                <input type="password" class="js-toggle-password form-control form-control-lg __rounded"
-                                    name="password" id="signupSrPassword" value="{{ $password ?? '' }}"
-                                    aria-label="{{translate('messages.password_length_placeholder',['length'=>'6+'])}}" required
-                                    data-msg="{{translate('messages.invalid_password_warning')}}"
-                                    data-hs-toggle-password-options='{
-                                                "target": "#changePassTarget",
-                                        "defaultClass": "tio-hidden-outlined",
-                                        "showClass": "tio-visible-outlined",
-                                        "classChangeTarget": "#changePassIcon"
-                                        }'>
-
-                                <div class="focus-effects"></div>
-                                <div id="changePassTarget" class="input-group-append">
-                                    <a class="input-group-text" href="javascript:">
-                                        <i id="changePassIcon" class="tio-visible-outlined"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Form Group -->
-
-                    </div>
-                        <div class="form-group mb-3">
-
-                            @php($recaptcha = \App\CentralLogics\Helpers::get_business_settings('recaptcha'))
-                            @if(isset($recaptcha) && $recaptcha['status'] == 1)
-                                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
-
-                                <input type="hidden" name="set_default_captcha" id="set_default_captcha_value" value="0" >
-                                <div class="row p-2 d-none" id="reload-captcha">
-                                    <div class="col-6 pr-0">
-                                        <input type="text" class="form-control form-control-lg border-0" name="custome_recaptcha"
-                                            id="custome_recaptcha" required placeholder="{{translate('Enter recaptcha value')}}" autocomplete="off" value="{{env('APP_MODE')=='dev'? session('six_captcha'):''}}">
-                                    </div>
-                                    <div class="col-6 bg-white rounded d-flex">
-                                        <img src="<?php echo $custome_recaptcha->inline(); ?>" class="rounded w-100" />
-                                        <div class="p-3 pr-0 capcha-spin reloadCaptcha">
-                                            <i class="tio-cached"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            @else
-                                <div class="row p-2" id="reload-captcha">
-                                    <div class="col-6 pr-0">
-                                        <input type="text" class="form-control form-control-lg border-0" name="custome_recaptcha"
-                                            id="custome_recaptcha" required placeholder="{{translate('Enter recaptcha value')}}" autocomplete="off" value="{{env('APP_MODE')=='dev'? session('six_captcha'):''}}">
-                                    </div>
-                                    <div class="col-6 bg-white rounded d-flex">
-                                        <img src="<?php echo $custome_recaptcha->inline(); ?>" class="rounded w-100" />
-                                        <div class="p-3 pr-0 capcha-spin reloadCaptcha">
-                                            <i class="tio-cached"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    <!-- Checkbox -->
-                    <div class="form-group mb-3">
-                        <div class="d-flex justify-content-between align-items-center gap-3">
-                            <div class="custom-control custom-checkbox mb-0">
-                                <input type="checkbox" class="custom-control-input" id="termsCheckbox" {{ $password ? 'checked' : '' }}
-                                    name="remember">
-                                <label class="custom-control-label text-muted" for="termsCheckbox">
-                                    {{translate('messages.remember_me')}}
-                                </label>
-                            </div>
-                            <!-- forget password -->
-                                <div class="{{ $role == 'admin' ? '' : 'd-none' }}"  id="forget-password">
-                                    <div class="custom-control text-hover-primary">
-                                        <span type="button" data-toggle="modal" data-target="#forgetPassModal">{{ translate('Forget_Password') }} ?</span>
-                                    </div>
-                                </div>
-                                <div class="{{ $role == 'vendor' ? '' : 'd-none' }}"  id="forget-password1">
-                                    <div class="custom-control text-hover-primary">
-                                        <span type="button" data-toggle="modal" data-target="#forgetPassModal1">{{ translate('Forget_Password') }} ?</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End forget password -->
+                        <div class="d-flex">
+                            <img src="<?php echo $custome_recaptcha->inline(); ?>" class="w-100" alt="captcha"/>
+                            <div class="capcha-spin reloadCaptcha"><i class="tio-cached"></i></div>
                         </div>
                     </div>
-                    <!-- End Checkbox -->
-
-                    <button type="submit" class="btn btn-lg btn-block btn-primary" id="signInBtn">{{translate('messages.sign_in')}}</button>
-                     @if ($role == 'admin')
-                     @php($data = \App\Models\DataSetting::where('type', 'login_restaurant')->pluck('value')->first() ?? 'restaurant')
-                     <p class="text-center mt-4 fs-14">{{ translate('Login as Restaurant Owner?') }} <a href="{{url('/') }}/login/{{$data}}" class="text__primary font-semibold">{{ translate('Login Here') }}</a></p>
-                    @endif
-
-                     @if ($role == 'vendor')
-                     <p class="text-center mt-4 fs-14">{{ translate('Don’t have account ?') }} <a href="{{ route('restaurant.create') }}" class="text__primary font-semibold">{{ translate('Registration Here') }}</a></p>
-                    @endif
-                </form>
-                <!-- End Form -->
-
-                <!-- End Content -->
-            </div>
-            @if(env('APP_MODE') =='demo' )
-                @if (isset($role) &&  $role == 'admin')
-                    <div class="auto-fill-data-copy">
-                        <div class="d-flex flex-wrap align-items-center justify-content-between">
-                            <div>
-                                <span class="d-block"><strong>Email</strong> : admin@admin.com</span>
-                                <span class="d-block"><strong>Password</strong> : 12345678</span>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary m-0" id="copy_cred"><i class="tio-copy"></i>
-                                </button>
-                            </div>
+                @else
+                    <div class="pp-captcha" id="reload-captcha">
+                        <div>
+                            <input type="text" class="form-control" name="custome_recaptcha" id="custome_recaptcha" required
+                                   placeholder="{{translate('Enter recaptcha value')}}" autocomplete="off"
+                                   value="{{env('APP_MODE')=='dev'? session('six_captcha'):''}}">
+                        </div>
+                        <div class="d-flex">
+                            <img src="<?php echo $custome_recaptcha->inline(); ?>" class="w-100" alt="captcha"/>
+                            <div class="capcha-spin reloadCaptcha"><i class="tio-cached"></i></div>
                         </div>
                     </div>
                 @endif
-                @if (isset($role) &&  $role == 'vendor')
-                    <div class="auto-fill-data-copy">
-                        <div class="d-flex flex-wrap align-items-center justify-content-between">
-                            <div>
-                                <span class="d-block"><strong>Email</strong> : test.restaurant@gmail.com</span>
-                                <span class="d-block"><strong>Password</strong> : 12345678</span>
-                            </div>
-                            <div>
-                                <button class="btn btn-primary m-0" id="copy_cred2"><i class="tio-copy"></i>
-                                </button>
-                            </div>
+
+                <div class="pp-row">
+                    <label class="pp-check" for="termsCheckbox">
+                        <input type="checkbox" id="termsCheckbox" name="remember" {{ $password ? 'checked' : '' }}>
+                        {{ translate('messages.remember_me') }}
+                    </label>
+                    @if ($role == 'admin')
+                        <button type="button" class="pp-forgot" data-toggle="modal" data-target="#forgetPassModal">{{ translate('Forget Password') }}</button>
+                    @elseif ($role == 'vendor')
+                        <button type="button" class="pp-forgot" data-toggle="modal" data-target="#forgetPassModal1">{{ translate('Forget Password') }}</button>
+                    @endif
+                </div>
+
+                <button type="submit" class="pp-btn" id="signInBtn">{{ translate('messages.login') }}</button>
+
+                @if ($role == 'admin')
+                    @php($data = \App\Models\DataSetting::where('type', 'login_restaurant')->pluck('value')->first() ?? 'restaurant')
+                    <p class="pp-switch">{{ translate('Login as Restaurant Owner?') }} <a href="{{url('/') }}/login/{{$data}}">{{ translate('Login Here') }}</a></p>
+                @endif
+                @if ($role == 'vendor')
+                    <p class="pp-switch">{{ translate('Don’t have account ?') }} <a href="{{ route('restaurant.create') }}">{{ translate('Registration Here') }}</a></p>
+                @endif
+            </form>
+            <!-- End Form -->
+
+            <div class="pp-footer">
+                <a href="{{ route('privacy-policy') }}" target="_blank" rel="noopener">{{ translate('Privacy Policy') }}</a>
+                <span>/</span>
+                <a href="{{ route('delete-account') }}" target="_blank" rel="noopener">{{ translate('Delete Account') }}</a>
+            </div>
+
+            @if(env('APP_MODE') =='demo' )
+                @if ($role == 'admin')
+                    <div class="pp-demo d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="d-block"><strong>Email</strong> : admin@admin.com</span>
+                            <span class="d-block"><strong>Password</strong> : 12345678</span>
                         </div>
+                        <button class="btn btn-primary m-0" id="copy_cred"><i class="tio-copy"></i></button>
+                    </div>
+                @endif
+                @if ($role == 'vendor')
+                    <div class="pp-demo d-flex align-items-center justify-content-between">
+                        <div>
+                            <span class="d-block"><strong>Email</strong> : test.restaurant@gmail.com</span>
+                            <span class="d-block"><strong>Password</strong> : 12345678</span>
+                        </div>
+                        <button class="btn btn-primary m-0" id="copy_cred2"><i class="tio-copy"></i></button>
                     </div>
                 @endif
             @endif
         </div>
-    </div>
+    </section>
 </main>
 <!-- ========== END MAIN CONTENT ========== -->
 
@@ -244,7 +338,6 @@
         <div class="modal-body">
           <div class="forget-pass-content">
               <img src="{{dynamicAsset('assets/admin/img/send-mail.svg')}}" alt="">
-              <!-- After Succeed -->
               <h4>
                   {{ translate('Send_Mail_to_Your_Email_?') }}
               </h4>
@@ -270,7 +363,6 @@
         <div class="modal-body">
           <div class="forget-pass-content">
               <img src="{{dynamicAsset('assets/admin/img/send-mail.svg')}}" alt="">
-              <!-- After Succeed -->
               <h4>
                   {{ translate('messages.Send_Mail_to_Your_Email_?') }}
               </h4>
@@ -295,7 +387,6 @@
           </div>
           <div class="modal-body">
             <div class="forget-pass-content">
-                <!-- After Succeed -->
                 <img src="{{dynamicAsset('assets/admin/img/sent-mail.svg')}}" alt="">
                 <h4>
                   {{ translate('Mail Sent to Registered Email Successfully') }}
@@ -333,25 +424,6 @@
 @endif
 
 <script>
-    // $("#forget-password").hide();
-      $("#role-select").change(function() {
-        var selectValue = $(this).val();
-        if (selectValue == "admin") {
-          $("#forget-password").show();
-          $("#forget-password1").hide();
-        } else if(selectValue == "vendor") {
-          $("#forget-password").hide();
-          $("#forget-password1").show();
-        }
-        else {
-          $("#forget-password").hide();
-          $("#forget-password1").hide();
-        }
-      });
-</script>
-
-
-<script>
     $(document).on('click','.reloadCaptcha', function(){
         $.ajax({
             url: "{{ route('reload-captcha') }}",
@@ -375,13 +447,11 @@
 <script>
     $(document).on('ready', function () {
         // INITIALIZATION OF SHOW PASSWORD
-        // =======================================================
         $('.js-toggle-password').each(function () {
             new HSTogglePassword(this).init()
         });
 
         // INITIALIZATION OF FORM VALIDATION
-        // =======================================================
         $('.js-validate').each(function () {
             $.HSCore.components.HSValidation.init($(this));
         });
@@ -390,8 +460,6 @@
 
 @if(isset($recaptcha) && $recaptcha['status'] == 1)
     <script src="https://www.google.com/recaptcha/api.js?render={{$recaptcha['site_key']}}"></script>
-@endif
-@if(isset($recaptcha) && $recaptcha['status'] == 1)
     <script>
         $(document).ready(function() {
             $('#signInBtn').click(function (e) {
@@ -431,8 +499,6 @@
 @endif
 {{-- recaptcha scripts end --}}
 
-
-
 @if(env('APP_MODE') =='demo')
     <script>
         $("#copy_cred").click(function() {
@@ -453,10 +519,5 @@
         })
     </script>
 @endif
-
-<!-- IE Support -->
-<script>
-    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) document.write('<script src="{{dynamicAsset('/assets/admin')}}/vendor/babel-polyfill/polyfill.min.js"><\/script>');
-</script>
 </body>
 </html>

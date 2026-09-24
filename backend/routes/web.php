@@ -66,6 +66,7 @@ Route::get('terms-and-conditions', [HomeController::class, 'terms_and_conditions
 Route::get('about-us', [HomeController::class, 'about_us'])->name('about-us');
 Route::match(['get', 'post'],'contact-us', [HomeController::class, 'contact_us'])->name('contact-us');
 Route::get('privacy-policy', [HomeController::class, 'privacy_policy'])->name('privacy-policy');
+Route::view('delete-account', 'delete-account')->name('delete-account');
 Route::post('newsletter/subscribe', [NewsletterController::class, 'newsLetterSubscribe'])->name('newsletter.subscribe');
 
 Route::get('refund-policy', [HomeController::class, 'refund_policy'])->name('refund-policy');
