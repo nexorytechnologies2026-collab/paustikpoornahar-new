@@ -10,6 +10,7 @@
  */
 
 use App\CentralLogics\Helpers;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
@@ -89,6 +90,19 @@ if (!is_dir($storage . '/business')) {
         say('default images copied to storage');
     }
 }
+
+// Every restaurant delivers its own orders: force self delivery and hide delivery-man sign-up
+$forced = DB::table('restaurants')->where('self_delivery_system', '!=', 1)->update(['self_delivery_system' => 1])
+    + DB::table('subscription_packages')->where('self_delivery', '!=', 1)->update(['self_delivery' => 1])
+    + DB::table('restaurant_subscriptions')->where('self_delivery', '!=', 1)->update(['self_delivery' => 1]);
+if ($forced > 0) {
+    say("self delivery enabled on {$forced} restaurant/package rows");
+}
+if (DB::table('business_settings')->where('key', 'toggle_dm_registration')->value('value') !== '0') {
+    Helpers::businessUpdateOrInsert(['key' => 'toggle_dm_registration'], ['value' => '0']);
+    say('delivery-man self registration turned off');
+}
+Cache::forget('business_settings_keys');
 
 // Marker file on the volume means a later logo/icon change in the admin panel is not overwritten on redeploy
 foreach (['logo' => 'logo.png', 'icon' => 'icon.png'] as $settingKey => $file) {

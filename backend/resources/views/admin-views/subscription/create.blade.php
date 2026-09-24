@@ -150,12 +150,8 @@
                             <span class="form-check-label text-dark">{{ translate('messages.pos_system') }}</span>
                         </label>
                     </div>
-                    <div class="check-item">
-                        <label class="form-group form-check form--check">
-                            <input type="checkbox" class="form-check-input package-available-feature" {{ old('self_delivery') == 1 ? 'checked' : '' }}  name="self_delivery" value="1">
-                            <span class="form-check-label text-dark">{{ translate('messages.self_delivery') }}</span>
-                        </label>
-                    </div>
+                    {{-- Every restaurant delivers its own orders --}}
+                    <input type="hidden" name="self_delivery" value="1">
                     <div class="check-item">
                         <label class="form-group form-check form--check">
                             <input type="checkbox" class="form-check-input package-available-feature" {{ old('mobile_app') == 1 ? 'checked' : '' }}  name="mobile_app" value="1" >

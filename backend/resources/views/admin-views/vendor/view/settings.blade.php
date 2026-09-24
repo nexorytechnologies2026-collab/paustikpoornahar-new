@@ -175,7 +175,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-md-4 col-sm-6">
+                        <div class="col-xl-4 col-md-4 col-sm-6 d-none">
                             <div class="form-group mb-0">
                                 <label
                                     class="toggle-switch toggle-switch-sm d-flex justify-content-between border  rounded px-3 form-control"

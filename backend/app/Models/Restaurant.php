@@ -616,6 +616,10 @@ class Restaurant extends Model
 
     protected static function booted()
     {
+        // Every restaurant delivers its own orders; there are no platform delivery men
+        static::saving(function ($restaurant) {
+            $restaurant->self_delivery_system = 1;
+        });
         // static::addGlobalScope('storage', function ($builder) {
         //     $builder->with('storage');
         // });

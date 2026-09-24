@@ -27,7 +27,6 @@ import 'package:paustik_poornahar_restaurant/features/chat/domain/models/notific
 import 'package:paustik_poornahar_restaurant/features/order/domain/models/order_details_model.dart';
 import 'package:paustik_poornahar_restaurant/features/order/domain/models/order_model.dart';
 import 'package:paustik_poornahar_restaurant/features/order/screens/invoice_print_screen.dart';
-import 'package:paustik_poornahar_restaurant/features/order/widgets/available_deliveryman_bottom_sheet_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/order/widgets/camera_button_sheet_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/order/widgets/cancellation_dialogue_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/order/widgets/collect_money_delivery_sheet_widget.dart';
@@ -138,12 +137,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
             || (controllerOrderModel.orderStatus == 'handover' && ((selfDelivery || controllerOrderModel.orderType == 'take_away') || controllerOrderModel.orderType == 'dine_in')) : false;
         bool showBottomView = controllerOrderModel != null ? showSlider || controllerOrderModel.orderStatus == 'picked_up' || widget.isRunningOrder : false;
         bool showDeliveryConfirmImage = orderController.showDeliveryImageField && Get.find<SplashController>().configModel!.dmPictureUploadStatus!;
-
-        bool canShowDeliveryMan = controllerOrderModel != null ? Get.find<ProfileController>().profileModel!.restaurants![0].selfDeliverySystem == 1
-            && controllerOrderModel.orderType != 'take_away'
-          && (controllerOrderModel.orderStatus == 'pending' || controllerOrderModel.orderStatus == 'confirmed'
-                || controllerOrderModel.orderStatus == 'processing' || controllerOrderModel.orderStatus == 'accepted'
-            ) : false;
 
         double? deliveryCharge = 0;
         double? deliveryTypeCharge = 0;
@@ -830,30 +823,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
 
                   (order.deliveryMan != null && order.orderType != 'dine_in') ? SectionWidget(
                     title: "delivery_man_info".tr,
-                    titleWidget: canShowDeliveryMan ? InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                          isScrollControlled: true, useRootNavigator: true, context: context,
-                          backgroundColor: Colors.white,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(Dimensions.radiusExtraLarge),
-                              topRight: Radius.circular(Dimensions.radiusExtraLarge),
-                            ),
-                          ),
-                          builder: (context) {
-                            return ConstrainedBox(
-                              constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.7, minHeight: 200),
-                              child: AvailableDeliveryManBottomSheetWidget(orderId: order.id!, assignedDeliveryManId: order.deliveryMan?.id),
-                            );
-                          },
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('change'.tr, style: robotoRegular.copyWith(color: Colors.blue, fontSize: Dimensions.fontSizeSmall)),
-                      ),
-                    ) : const SizedBox(),
                     child: Container(
                       padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                       decoration: BoxDecoration(
@@ -938,45 +907,6 @@ class _OrderDetailsScreenState extends State<OrderDetailsScreen> with WidgetsBin
                         ) : const SizedBox(),
 
                       ]),
-                    ),
-                  ) : Get.find<ProfileController>().profileModel!.restaurants![0].selfDeliverySystem == 1 && canShowDeliveryMan && order.orderType != 'dine_in' ? SectionWidget(
-                    title: 'delivery_man_info'.tr,
-                    child: InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                          isScrollControlled: true, useRootNavigator: true, context: context,
-                          backgroundColor: Colors.white,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(Dimensions.radiusExtraLarge),
-                              topRight: Radius.circular(Dimensions.radiusExtraLarge),
-                            ),
-                          ),
-                          builder: (context) {
-                            return ConstrainedBox(
-                              constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.7, minHeight: 200),
-                              child: AvailableDeliveryManBottomSheetWidget(orderId: order.id!, assignedDeliveryManId: order.deliveryMan?.id),
-                            );
-                          },
-                        );
-                      },
-                      child: Container(
-                        height: 90, width: context.width,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                          color: Theme.of(context).hintColor.withValues(alpha: 0.1),
-                        ),
-                        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-
-                          const Icon(Icons.add, size: 25,),
-                          const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                          Text(
-                            "assign_delivery_man".tr,
-                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
-                          ),
-                        ]),
-                      ),
                     ),
                   ) : const SizedBox(),
                   SizedBox(height: Dimensions.paddingSizeSmall),

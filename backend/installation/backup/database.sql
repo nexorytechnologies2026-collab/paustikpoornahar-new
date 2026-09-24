@@ -491,7 +491,7 @@ INSERT INTO `business_settings` (`id`, `key`, `value`, `created_at`, `updated_at
 (73, 'canceled_by_deliveryman', '0', NULL, NULL),
 (74, 'show_dm_earning', NULL, NULL, NULL),
 (75, 'toggle_veg_non_veg', '1', NULL, NULL),
-(76, 'toggle_dm_registration', NULL, NULL, NULL),
+(76, 'toggle_dm_registration', '0', NULL, NULL),
 (77, 'toggle_restaurant_registration', NULL, NULL, NULL),
 (78, 'recaptcha', '{\"status\":\"0\",\"site_key\":null,\"secret_key\":null}', '2022-01-09 20:03:59', '2022-01-09 20:03:59'),
 (79, 'language', '[\"en\"]', NULL, NULL),

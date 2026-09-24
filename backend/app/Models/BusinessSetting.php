@@ -6,6 +6,7 @@ use App\CentralLogics\Helpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
 class BusinessSetting extends Model
@@ -54,6 +55,8 @@ class BusinessSetting extends Model
         parent::boot();
         static::saved(function ($model) {
              Helpers::deleteCacheData('business_settings_all_data');
+            // /api/v1/config caches settings under this key; drop it so admin changes reach the apps
+            Cache::forget('business_settings_keys');
             $value = Helpers::getDisk();
 
             DB::table('storages')->updateOrInsert([

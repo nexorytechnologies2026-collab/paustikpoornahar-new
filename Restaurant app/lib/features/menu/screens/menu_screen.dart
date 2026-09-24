@@ -45,12 +45,6 @@ class MenuScreen extends StatelessWidget {
       // });
     }
 
-    if(restaurant?.selfDeliverySystem == 1) {
-      menuList.add(MenuModel(
-        icon: Images.deliveryMan, iconColor: Colors.white, title: 'delivery_man'.tr, route: RouteHelper.getDeliveryManRoute(),
-      ));
-    }
-
     if(modulePermission.adsList!){
       menuList.add(MenuModel(icon: Images.adsMenu, title: 'advertisements'.tr, route: RouteHelper.getAdvertisementListRoute()));
     }

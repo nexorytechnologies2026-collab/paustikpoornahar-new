@@ -71,6 +71,10 @@ class SubscriptionPackage extends Model
 
     protected static function booted()
     {
+        // Every restaurant delivers its own orders; there are no platform delivery men
+        static::saving(function ($package) {
+            $package->self_delivery = 1;
+        });
         static::addGlobalScope('translate', function (Builder $builder) {
             $builder->with(['translations' => function ($query) {
                 return $query->where('locale', app()->getLocale());

@@ -57,6 +57,10 @@ class RestaurantSubscription extends Model
 
     protected static function booted()
     {
+        // Every restaurant delivers its own orders; there are no platform delivery men
+        static::saving(function ($subscription) {
+            $subscription->self_delivery = 1;
+        });
         static::addGlobalScope(new ZoneScope);
     }
     public function getExpiryDateParsedAttribute($value){
