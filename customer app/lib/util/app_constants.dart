@@ -6,7 +6,7 @@ class AppConstants {
   static const String appName = 'Paustik Poornahar';
   static const double appVersion = 1.0; ///Flutter SDK: 3.41.6
 
-  static const String fontFamily = 'Roboto';
+  static const String fontFamily = 'Poppins';
   static const bool payInWevView = false;
   static const String webHostedUrl = 'https://stackfood-web.6amtech.com';
   static const bool useReactWebsite = false;
@@ -205,9 +205,7 @@ class AppConstants {
   /// Languages
   static List<LanguageModel> languages = [
     LanguageModel(imageUrl: Images.english, languageName: 'English', countryCode: 'US', languageCode: 'en'),
-    LanguageModel(imageUrl: Images.arabic, languageName: 'عربى', countryCode: 'SA', languageCode: 'ar'),
-    LanguageModel(imageUrl: Images.spanish, languageName: 'Spanish', countryCode: 'ES', languageCode: 'es'),
-    LanguageModel(imageUrl: Images.bengali, languageName: 'Bengali', countryCode: 'BN', languageCode: 'bn'),
+    LanguageModel(imageUrl: Images.marathi, languageName: 'मराठी', countryCode: 'IN', languageCode: 'mr'),
   ];
 
   static List<String> joinDropdown = [
