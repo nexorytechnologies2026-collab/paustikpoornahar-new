@@ -1,0 +1,6 @@
+package com.poornaahar.restaurant
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}

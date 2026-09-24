@@ -12,7 +12,7 @@ class AppConstants {
   static const bool useReactWebsite = false;
   static const String googleServerClientId = '859076248736-n66omq4omo4pfa3drt62vecga6cfm38f.apps.googleusercontent.com';
 
-  static const String baseUrl = 'https://stackfood-admin.6amtech.com';
+  static const String baseUrl = 'https://backend-production-21c5.up.railway.app';
   static const String categoryUri = '/api/v1/categories';
   static const String bannerUri = '/api/v1/banners';
   static const String restaurantProductUri = '/api/v1/products/latest';
