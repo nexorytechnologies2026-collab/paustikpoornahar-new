@@ -37,7 +37,6 @@ class _SocialLoginWidgetState extends State<SocialLoginWidget> {
   Widget build(BuildContext context) {
     final GoogleSignIn googleSignIn = GoogleSignIn.instance;
 
-    print('=====social: ${Get.find<SplashController>().configModel!.appleLogin!.isNotEmpty} && ${Get.find<SplashController>().configModel!.appleLogin![0].status!} && ${!GetPlatform.isAndroid} && ${!GetPlatform.isWeb}');
     bool canAppleLogin = Get.find<SplashController>().configModel!.appleLogin!.isNotEmpty && Get.find<SplashController>().configModel!.appleLogin![0].status!
         && !GetPlatform.isAndroid && !GetPlatform.isWeb;
 

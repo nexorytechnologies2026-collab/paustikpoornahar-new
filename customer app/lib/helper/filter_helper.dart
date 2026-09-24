@@ -1,4 +1,3 @@
-import 'package:paustik_poornahar/common/widgets/filter/domain/models/filter_data_model.dart';
 
 class FilterHelper {
   //

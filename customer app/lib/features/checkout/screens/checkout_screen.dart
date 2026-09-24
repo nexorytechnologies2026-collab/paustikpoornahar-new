@@ -189,6 +189,7 @@ class CheckoutScreenState extends State<CheckoutScreen> {
 
     if(!AuthHelper.isLoggedIn() && AuthHelper.isGuestLoggedIn() && checkoutController.isFirstTime){
       Future.delayed(const Duration(milliseconds: 300), () {
+        if(!mounted) return;
         if(ResponsiveHelper.isDesktop(context)){
           Get.dialog(
             Dialog(child: GuestLoginBottomSheet(callBack: () => initCall())),
@@ -357,7 +358,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                 );
 
                 if(placeOrderBody.restaurantId != null) {
-                  print('---place order restaurant id: ${placeOrderBody.restaurantId}');
                   checkoutController.getOrderTax(placeOrderBody);
                 }
               }
@@ -734,7 +734,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
   }
 
   Future<void> showCashBackSnackBar() async {
-    print('==============payable amount: $_payableAmount');
     await Get.find<HomeController>().getCashBackData(_payableAmount!);
     double? cashBackAmount = Get.find<HomeController>().cashBackData?.cashbackAmount ?? 0;
     String? cashBackType = Get.find<HomeController>().cashBackData?.cashbackType ?? '';

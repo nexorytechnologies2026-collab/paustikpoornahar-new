@@ -1,16 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:paustik_poornahar/features/category/controllers/category_controller.dart';
 import 'package:paustik_poornahar/features/cuisine/controllers/cuisine_controller.dart';
-import 'package:paustik_poornahar/features/cuisine/widgets/cuisine_filter_widget.dart';
-import 'package:paustik_poornahar/features/restaurant/controllers/restaurant_controller.dart';
-import 'package:paustik_poornahar/features/search/controllers/search_controller.dart' as search;
 import 'package:paustik_poornahar/helper/responsive_helper.dart';
 import 'package:paustik_poornahar/util/dimensions.dart';
 import 'package:paustik_poornahar/util/styles.dart';
 import 'package:paustik_poornahar/common/widgets/menu_drawer_widget.dart';
 import 'package:paustik_poornahar/common/widgets/paginated_list_view_widget.dart';
 import 'package:paustik_poornahar/common/widgets/product_view_widget.dart';
-import 'package:paustik_poornahar/common/widgets/veg_filter_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

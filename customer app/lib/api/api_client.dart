@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:paustik_poornahar/api/api_checker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
@@ -146,7 +145,6 @@ class ApiClient extends GetxService {
                     contentType: _getMediaType(platformFile.name),
                   ),
                 );
-                print('====> Added file using bytes: ${platformFile.name}');
               }
               // Option 2: If readStream is available, read it to bytes first
               else if(platformFile.readStream != null) {
@@ -167,9 +165,8 @@ class ApiClient extends GetxService {
                       contentType: _getMediaType(platformFile.name),
                     ),
                   );
-                  print('====> Added file using stream (converted to bytes): ${platformFile.name}, size: ${fileBytes.length}');
                 } catch (e) {
-                  print('ERROR reading stream for ${platformFile.name}: $e');
+                  debugPrint('ERROR reading stream for ${platformFile.name}: $e');
                 }
               }
               // Op

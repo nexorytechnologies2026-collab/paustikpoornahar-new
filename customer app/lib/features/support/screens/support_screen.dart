@@ -25,7 +25,6 @@ class _SupportScreenState extends State<SupportScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
 
     bool isDesktop = ResponsiveHelper.isDesktop(context);
 

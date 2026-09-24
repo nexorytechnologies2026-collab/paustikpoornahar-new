@@ -163,7 +163,6 @@ class SplashRepository implements SplashRepositoryInterface {
         FirebaseMessaging.instance.subscribeToTopic(AppConstants.topic);
         FirebaseMessaging.instance.subscribeToTopic(AppConstants.maintenanceModeTopic);
       }
-      print('====Topic Subscription Successful');
       return true;
     }catch(e) {
       debugPrint('Topic Subscription Failed, $e');

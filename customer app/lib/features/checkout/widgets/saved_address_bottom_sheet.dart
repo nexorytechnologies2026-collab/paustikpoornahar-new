@@ -92,7 +92,7 @@ class _SavedAddressBottomSheetState extends State<SavedAddressBottomSheet> {
                       itemCount: addressController.addressList?.length,
                       itemBuilder: (context, index) {
                         final address = addressController.addressList?[index];
-                        bool isSelectedAddress = checkoutController.address?.id == address!.id && checkoutController.address?.latitude == address!.latitude && checkoutController.address?.longitude == address.longitude;
+                        bool isSelectedAddress = checkoutController.address?.id == address!.id && checkoutController.address?.latitude == address.latitude && checkoutController.address?.longitude == address.longitude;
 
                         return Container(
                           margin: const EdgeInsets.only(bottom: Dimensions.paddingSizeSmall),

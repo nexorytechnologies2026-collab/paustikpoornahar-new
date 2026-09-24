@@ -259,8 +259,6 @@ class PublicFilterController extends GetxController implements GetxService {
   }
 
   void setSearchMode({bool canUpdate = true, FilterDataModel? filterDataModel} ) {
-    print("---->> ${filterDataModel?.toJson()}");
-
     // _searchText = filterDataModel?.name ??'';
     // _offset = filterDataModel?.offset ?? 1;
     // _limit = filterDataModel?.limit ?? 10;
@@ -298,12 +296,6 @@ class PublicFilterController extends GetxController implements GetxService {
   }
 
 
-  bool _isVegType(String type) {
-    return type == 'veg';
-  }
-  bool _isNonVegType(String type) {
-    return type == 'non_veg';
-  }
 
 
 

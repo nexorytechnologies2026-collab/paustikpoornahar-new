@@ -4,9 +4,9 @@ import 'package:paustik_poornahar/util/dimensions.dart';
 import 'package:paustik_poornahar/util/styles.dart';
 
 class SectionWrapper extends StatelessWidget {
-  String title;
-  Widget child;
-  SectionWrapper({super.key, required this.title, required this.child});
+  final String title;
+  final Widget child;
+  const SectionWrapper({super.key, required this.title, required this.child});
 
   @override
   Widget build(BuildContext context) {

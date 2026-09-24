@@ -38,8 +38,6 @@ class SearchRepository implements SearchRepositoryInterface {
     int? isOneRatting = 0, int? isTwoRatting = 0, int? isThreeRatting = 0, int? isFourRatting = 0, int? isFiveRatting = 0,
     String? sortBy, int? discounted = 0, required List<int> selectedCuisines, required List<int> orderType, int? isOpenRestaurant}) async {
 
-    print("--------->>>>$type");
-
     return await apiClient.getData('${AppConstants.searchUri}${isRestaurant ? 'restaurants' : 'products'}/search?'
         '&offset=$offset&limit=10'
         '&name=$query'
