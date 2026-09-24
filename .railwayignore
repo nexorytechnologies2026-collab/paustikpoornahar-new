@@ -1,0 +1,13 @@
+# Only backend/ is deployed (service root directory is /backend)
+customer app/
+Restaurant app/
+stackfoodrestapp-90/
+__MACOSX/
+*.rar
+paushtik-poornaahar-logo.png
+backend/vendor/
+backend/node_modules/
+backend/.env
+backend/storage/logs/*
+backend/storage/app/public/*
+backend/installation/backup/database_8.*.sql
