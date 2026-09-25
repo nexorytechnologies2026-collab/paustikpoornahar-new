@@ -25,19 +25,19 @@ class AdsSectionWidget extends StatelessWidget {
         border: Border.all(color: primary.withValues(alpha: 0.18)),
         borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
       ),
-      padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
+      padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
       child: Row(children: [
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('want_to_get_highlighted'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
+            Text('want_to_get_highlighted'.tr, maxLines: 1, overflow: TextOverflow.ellipsis, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)),
             const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
             Text(
               'create_ads_to_reach_more_customers'.tr,
-              maxLines: 2, overflow: TextOverflow.ellipsis,
+              maxLines: 1, overflow: TextOverflow.ellipsis,
               style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
             ),
-            const SizedBox(height: Dimensions.paddingSizeDefault),
+            const SizedBox(height: Dimensions.paddingSizeSmall),
 
             ElevatedButton(
               onPressed: () {
@@ -53,13 +53,14 @@ class AdsSectionWidget extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: primary, foregroundColor: Colors.white, elevation: 0,
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),
+                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: 6),
+                minimumSize: const Size(0, 32), tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge)),
               ),
               child: Row(mainAxisSize: MainAxisSize.min, children: [
-                Text('create_ads'.tr, style: robotoBold.copyWith(color: Colors.white)),
+                Text('create_ads'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.white)),
                 const SizedBox(width: Dimensions.paddingSizeExtraSmall),
-                const Icon(Icons.arrow_forward_rounded, size: 18),
+                const Icon(Icons.arrow_forward_rounded, size: 16),
               ]),
             ),
           ]),
@@ -67,9 +68,9 @@ class AdsSectionWidget extends StatelessWidget {
         const SizedBox(width: Dimensions.paddingSizeDefault),
 
         Container(
-          height: 96, width: 96, alignment: Alignment.center,
+          height: 64, width: 64, alignment: Alignment.center,
           decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
-          child: Image.asset(Images.adsIcon, height: 54, width: 54, color: primary),
+          child: Image.asset(Images.adsIcon, height: 34, width: 34, color: primary),
         ),
       ]),
     );
