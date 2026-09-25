@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_card.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_ink_well_widget.dart';
@@ -340,17 +341,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               return OrderWidget(orderModel: orderList[index], hasDivider: index != orderList.length-1, isRunning: true);
                             },
                           ) : Padding(
-                            padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraLarge),
-                            child: Column(children: [
-                              Opacity(opacity: 0.45, child: Image.asset(Images.emptyBox, height: 90)),
-                              const SizedBox(height: Dimensions.paddingSizeDefault),
-                              Text('no_order_yet'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
-                              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-                              Text(
-                                'new_orders_from_customers_will_appear_here'.tr, textAlign: TextAlign.center,
-                                style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
-                              ),
-                            ]),
+                            padding: EdgeInsets.zero,
+                            child: EmptyStateWidget(title: 'no_order_yet'.tr, subtitle: 'new_orders_from_customers_will_appear_here'.tr),
                           ) : ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,

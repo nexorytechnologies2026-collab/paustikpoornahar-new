@@ -1,6 +1,6 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/controllers/theme_controller.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
-import 'package:paustik_poornahar_restaurant/common/widgets/custom_asset_image_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_card.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_snackbar_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/order/controllers/order_controller.dart';
@@ -11,7 +11,6 @@ import 'package:paustik_poornahar_restaurant/features/profile/controllers/profil
 import 'package:paustik_poornahar_restaurant/util/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:paustik_poornahar_restaurant/util/images.dart';
 import 'package:paustik_poornahar_restaurant/util/styles.dart';
 
 class OrderHistoryScreen extends StatefulWidget {
@@ -152,7 +151,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                     padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                     child: Column(children: [
                       SizedBox(
-                        height: 40,
+                        height: 44,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: orderController.statusList.length,
@@ -171,14 +170,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                       const SizedBox(height: Dimensions.paddingSizeDefault),
             
                       Expanded(
-                        child: orderController.historyOrderList != null ? orderController.historyOrderList!.isNotEmpty ? const OrderViewWidget() : Center(
-                          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                            const CustomAssetImageWidget(image: Images.noOrderIcon, height: 50, width: 50),
-                            const SizedBox(height: Dimensions.paddingSizeDefault),
-            
-                            Text('${'no_order_yet'.tr}!', style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).hintColor)),
-                          ]),
-                        ) : const Center(child: CircularProgressIndicator()),
+                        child: orderController.historyOrderList != null ? orderController.historyOrderList!.isNotEmpty ? const OrderViewWidget() : EmptyStateWidget(title: 'no_order_yet'.tr, subtitle: 'new_orders_from_customers_will_appear_here'.tr) : const Center(child: CircularProgressIndicator()),
                       ),
             
                     ]),

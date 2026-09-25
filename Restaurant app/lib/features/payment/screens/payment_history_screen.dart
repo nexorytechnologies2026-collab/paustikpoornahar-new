@@ -1,9 +1,8 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
-import 'package:paustik_poornahar_restaurant/common/widgets/custom_asset_image_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/payment/controllers/payment_controller.dart';
 import 'package:paustik_poornahar_restaurant/helper/price_converter_helper.dart';
 import 'package:paustik_poornahar_restaurant/util/dimensions.dart';
-import 'package:paustik_poornahar_restaurant/util/images.dart';
 import 'package:paustik_poornahar_restaurant/util/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -72,12 +71,7 @@ class _PaymentHistoryScreenState extends State<PaymentHistoryScreen> {
 
             ]);
           },
-        ) : Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          const CustomAssetImageWidget(image: Images.noTransactionIcon, height: 50, width: 50),
-          const SizedBox(height: Dimensions.paddingSizeSmall),
-
-          Text('${'no_transaction_yet'.tr}!' , style: robotoMedium.copyWith(color: Theme.of(context).hintColor)),
-        ])) : const Center(child: CircularProgressIndicator());
+        ) : EmptyStateWidget(title: 'no_transaction_yet'.tr) : const Center(child: CircularProgressIndicator());
       }),
     );
   }

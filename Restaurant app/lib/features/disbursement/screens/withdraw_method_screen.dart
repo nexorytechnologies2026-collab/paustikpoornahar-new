@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/disbursement/helper/disbursement_helper.dart';
 import 'package:paustik_poornahar_restaurant/features/payment/controllers/payment_controller.dart';
@@ -158,7 +159,7 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
 
             );
           },
-        ) : Center(child: Text('no_method_found'.tr, style: robotoMedium)) : const Center(child: CircularProgressIndicator());
+        ) : EmptyStateWidget(title: 'no_method_found'.tr) : const Center(child: CircularProgressIndicator());
       }),
     );
   }

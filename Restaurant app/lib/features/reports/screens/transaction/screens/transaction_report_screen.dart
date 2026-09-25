@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_tool_tip_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/expense/enum/filter_type.dart';
@@ -233,7 +234,7 @@ class _TransactionReportScreenState extends State<TransactionReportScreen> {
               itemBuilder: (context, index) {
                 return TransactionReportDetailsCardWidget(orderTransactions: reportController.orderTransactions![index]);
               },
-            ) : Center(child: Padding(padding: const EdgeInsets.only(top : 200), child: Text('no_transaction_found'.tr, style: robotoMedium)))
+            ) : EmptyStateWidget(title: 'no_transaction_found'.tr, topPadding: 60)
                 : const Center(child: CircularProgressIndicator()),
 
             reportController.isLoading ? Center(child: Padding(

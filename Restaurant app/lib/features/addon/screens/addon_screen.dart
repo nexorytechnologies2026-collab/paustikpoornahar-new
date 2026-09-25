@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_bottom_sheet_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_popup_menu_button.dart';
@@ -167,7 +168,7 @@ class _AddonScreenState extends State<AddonScreen> {
               );
             },
           ),
-        ) : Center(child: Text('no_addon_found'.tr)) : const Center(child: CircularProgressIndicator());
+        ) : EmptyStateWidget(title: 'no_addon_found'.tr) : const Center(child: CircularProgressIndicator());
       }),
     );
   }

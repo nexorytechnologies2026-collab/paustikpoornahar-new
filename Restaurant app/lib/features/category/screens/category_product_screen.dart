@@ -1,3 +1,5 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/status_chip_widget.dart';
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
@@ -5,7 +7,6 @@ import 'package:paustik_poornahar_restaurant/common/widgets/product_shimmer_widg
 import 'package:paustik_poornahar_restaurant/common/widgets/product_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/category/controllers/category_controller.dart';
 import 'package:paustik_poornahar_restaurant/util/dimensions.dart';
-import 'package:paustik_poornahar_restaurant/util/styles.dart';
 
 class CategoryProductScreen extends StatefulWidget {
   final int categoryId;
@@ -87,26 +88,10 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
                         }
                       },
                       child: Row(children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: Dimensions.paddingSizeDefault,
-                            vertical: Dimensions.paddingSizeExtraSmall,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).disabledColor.withValues(alpha: 0.3),
-                          ),
-                          child: Center(
-                            child: Text(
-                              index == 0 ? 'all'.tr : categoryController.subCategoryList![index - 1].name ?? '',
-                              style: robotoRegular.copyWith(
-                                fontSize: Dimensions.fontSizeSmall,
-                                color: isSelected ? Theme.of(context).cardColor : Theme.of(context).hintColor,
-                                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
-                              ),
-                            ),
-                          ),
-                        ),
+                        IgnorePointer(child: StatusChipWidget(
+                          title: index == 0 ? 'all'.tr : categoryController.subCategoryList![index - 1].name ?? '',
+                          isSelected: isSelected, onTap: () {},
+                        )),
 
                         index == categoryController.subCategoryList!.length ? const SizedBox() : Container(
                           margin: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
@@ -170,7 +155,7 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
               },
             ) : Padding(
               padding: const EdgeInsets.only(top: 300),
-              child: Center(child: Text('no_food_available'.tr)),
+              child: EmptyStateWidget(title: 'no_food_available'.tr),
             ) : GridView.builder(
               key: UniqueKey(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

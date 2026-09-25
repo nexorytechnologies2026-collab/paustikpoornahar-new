@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'dart:io';
 import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_asset_image_widget.dart';
@@ -140,13 +141,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           },
                         ),
                       ),
-                    ) : Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
-
-                      const CustomAssetImageWidget(image: Images.messageEmpty, height: 70, width: 70),
-                      const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                      Text('no_message_found'.tr, style: robotoRegular.copyWith(color: Theme.of(context).hintColor)),
-                    ])) : const ConversationDetailsShimmer());
+                    ) : EmptyStateWidget(title: 'no_message_found'.tr) : const ConversationDetailsShimmer());
                   }),
 
                   (chatController.messageModel != null && (chatController.messageModel!.status! || chatController.messageModel!.messages!.isEmpty)) ?  Container(

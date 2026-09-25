@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_snackbar_widget.dart';
@@ -213,7 +214,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
               shrinkWrap: true,
               itemBuilder: (context, index){
                 return ExpenseCardWidget(expense: expenseController.expenses![index]);
-            }) : Center(child: Text('no_expense_found'.tr, style: robotoMedium)) : const Center(child: CircularProgressIndicator()),
+            }) : EmptyStateWidget(title: 'no_expense_found'.tr) : const Center(child: CircularProgressIndicator()),
           ),
 
           expenseController.isLoading ? Center(child: Padding(

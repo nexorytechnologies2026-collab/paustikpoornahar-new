@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_image_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/auth/controllers/auth_controller.dart';
@@ -157,7 +158,7 @@ class _DisbursementScreenState extends State<DisbursementScreen> {
 
                 ]);
               },
-            ) : Padding(padding: const EdgeInsets.only(top: 200), child: Center(child: Text('no_history_available'.tr, style: robotoMedium))),
+            ) : EmptyStateWidget(title: 'no_history_available'.tr, topPadding: 60),
 
           ]),
         ) : const Center(child: CircularProgressIndicator());

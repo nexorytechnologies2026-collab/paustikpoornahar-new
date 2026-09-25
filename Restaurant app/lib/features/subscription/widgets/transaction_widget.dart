@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -258,7 +259,7 @@ class _TransactionWidgetState extends State<TransactionWidget> {
               physics: const AlwaysScrollableScrollPhysics(),
               child: SizedBox(
                 height: context.height * 0.6,
-                child: Center(child: Text('no_transaction_found'.tr, style: robotoMedium)),
+                child: EmptyStateWidget(title: 'no_transaction_found'.tr),
               ),
             ) : SizedBox(
               height: context.height * 0.6,

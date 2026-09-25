@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_tool_tip_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/expense/enum/filter_type.dart';
@@ -295,7 +296,7 @@ class _OrderReportScreenState extends State<OrderReportScreen> {
                 itemBuilder: (context, index) {
                   return ReportDetailsCardWidget(orders: reportController.orders![index]);
                 },
-              ) : Center(child: Padding(padding: const EdgeInsets.only(top : 200), child: Text('no_order_found'.tr, style: robotoMedium)))
+              ) : EmptyStateWidget(title: 'no_order_found'.tr, topPadding: 60)
                 : const Center(child: CircularProgressIndicator()),
 
               reportController.isLoading ? Center(child: Padding(

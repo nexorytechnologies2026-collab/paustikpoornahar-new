@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
@@ -75,7 +76,7 @@ class _OngoingOrdersScreenState extends State<OngoingOrdersScreen> {
             child: Column(children: [
 
               orderController.runningOrders != null ? SizedBox(
-                height: 40,
+                height: 44,
                 child: ListView.builder(
                   controller: statusScrollController,
                   scrollDirection: Axis.horizontal,
@@ -161,7 +162,7 @@ class _OngoingOrdersScreenState extends State<OngoingOrdersScreen> {
                   },
                 ) : Padding(
                   padding: const EdgeInsets.only(top: 50),
-                  child: Center(child: Text('no_order_found'.tr)),
+                  child: EmptyStateWidget(title: 'no_order_yet'.tr, subtitle: 'new_orders_from_customers_will_appear_here'.tr),
                 ) : ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,

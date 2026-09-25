@@ -181,9 +181,12 @@ class ProductWidget extends StatelessWidget {
 
                   Row(children: [
 
-                    product.categoryIds?[0].categoryName != null ? Text(
-                      '${'category'.tr}: ${product.categoryIds?[0].categoryName ?? ''}',
-                      style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                    product.categoryIds?[0].categoryName != null ? Flexible(
+                      child: Text(
+                        '${'category'.tr}: ${product.categoryIds?[0].categoryName ?? ''}',
+                        maxLines: 1, overflow: TextOverflow.ellipsis,
+                        style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                      ),
                     ) : const SizedBox(),
 
                     product.categoryIds?[0].categoryName != null ? Container(

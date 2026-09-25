@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
@@ -340,15 +341,7 @@ class _TaxReportScreenState extends State<TaxReportScreen> {
                   ),
                 );
               },
-            ) : Padding(
-              padding: EdgeInsets.only(top: context.height * 0.2),
-              child: Center(
-                child: Text(
-                  'no_tax_report_found'.tr,
-                  style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).textTheme.bodyLarge!.color?.withValues(alpha: 0.6)),
-                ),
-              ),
-            ),
+            ) : EmptyStateWidget(title: 'no_tax_report_found'.tr, topPadding: 60),
 
           ]),
         ) : const Center(child: CircularProgressIndicator()),

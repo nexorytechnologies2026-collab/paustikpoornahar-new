@@ -1,5 +1,5 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
-import 'package:paustik_poornahar_restaurant/common/widgets/custom_asset_image_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/disbursement/controllers/disbursement_controller.dart';
 import 'package:paustik_poornahar_restaurant/features/payment/controllers/payment_controller.dart';
 import 'package:paustik_poornahar_restaurant/features/payment/widgets/adjust_widget.dart';
@@ -225,13 +225,7 @@ class _WalletScreenState extends State<WalletScreen> {
                             showDivider: index != (paymentController.withdrawList!.length > 25 ? 25 : paymentController.withdrawList!.length-1),
                           );
                         },
-                      ) : Center(child: Padding(padding: const EdgeInsets.only(top: 40, bottom: 50), child: Column(children: [
-                        const CustomAssetImageWidget(image: Images.noTransactionIcon, height: 50, width: 50),
-                        const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                        Text('${'no_transaction_found'.tr}!' , style: robotoMedium.copyWith(color: Theme.of(context).hintColor)),
-
-                      ]))) : const Center(child: Padding(padding: EdgeInsets.only(top: 100, bottom: 50), child: CircularProgressIndicator())),
+                      ) : EmptyStateWidget(title: 'no_transaction_found'.tr) : const Center(child: Padding(padding: EdgeInsets.only(top: 100, bottom: 50), child: CircularProgressIndicator())),
 
                     if (paymentController.selectedIndex == 1)
                       paymentController.transactions != null ? paymentController.transactions!.isNotEmpty ? ListView.builder(
@@ -264,13 +258,7 @@ class _WalletScreenState extends State<WalletScreen> {
                             const Divider(height: 1),
                           ]);
                         },
-                      ) : Center(child: Padding(padding: const EdgeInsets.only(top: 40, bottom: 50), child: Column(children: [
-                        const CustomAssetImageWidget(image: Images.noTransactionIcon, height: 50, width: 50),
-                        const SizedBox(height: Dimensions.paddingSizeSmall),
-
-                        Text('${'no_transaction_yet'.tr}!' , style: robotoMedium.copyWith(color: Theme.of(context).hintColor)),
-
-                      ]))) : const Center(child: Padding(padding: EdgeInsets.only(top: 100), child: CircularProgressIndicator())),
+                      ) : EmptyStateWidget(title: 'no_transaction_yet'.tr) : const Center(child: Padding(padding: EdgeInsets.only(top: 100), child: CircularProgressIndicator())),
 
                   ]),
                 ),

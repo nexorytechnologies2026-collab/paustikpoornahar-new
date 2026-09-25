@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/status_chip_widget.dart';
 import 'package:flutter/rendering.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_asset_image_widget.dart';
@@ -321,33 +322,17 @@ class _RestaurantScreenState extends State<RestaurantScreen> with TickerProvider
                       const SizedBox(height: Dimensions.paddingSizeLarge),
 
                       restController.categoryNameList != null ? SizedBox(
-                        height: 30,
+                        height: 36,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: restController.categoryNameList!.length,
                           padding: const EdgeInsets.only(left: Dimensions.paddingSizeLarge),
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return InkWell(
+                            return StatusChipWidget(
+                              title: index == 0 ? 'all'.tr : restController.categoryNameList![index].trim(),
+                              isSelected: index == restController.categoryIndex,
                               onTap: () => restController.setCategory(index: index, foodType: 'all', stockType: 'all'),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeExtraSmall),
-                                margin: const EdgeInsets.only(right: Dimensions.paddingSizeSmall),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(Dimensions.radiusSmall + 2),
-                                  color: index == restController.categoryIndex ? Theme.of(context).primaryColor : Theme.of(context).disabledColor.withValues(alpha: 0.25),
-                                ),
-                                child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                                  Text(
-                                   index == 0 ? 'all'.tr : restController.categoryNameList![index].trim(),
-                                    style: robotoRegular.copyWith(
-                                      fontSize: Dimensions.fontSizeSmall,
-                                      color: index == restController.categoryIndex ? Theme.of(context).cardColor : Theme.of(context).hintColor,
-                                      fontWeight: index == restController.categoryIndex ? FontWeight.w700 : FontWeight.w400,
-                                    ),
-                                  ),
-                                ]),
-                              ),
                             );
                           },
                         ),

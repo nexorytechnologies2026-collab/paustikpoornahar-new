@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/campaign/controllers/campaign_controller.dart';
 import 'package:paustik_poornahar_restaurant/features/campaign/widgets/campaign_widget.dart';
@@ -54,7 +55,7 @@ class CampaignScreen extends StatelessWidget {
               return CampaignWidget(campaignModel: campaignController.campaignList![index]);
             },
           ),
-        ) : Center(child: Text('no_campaign_available'.tr)) : const Center(child: CircularProgressIndicator());
+        ) : EmptyStateWidget(title: 'no_campaign_available'.tr) : const Center(child: CircularProgressIndicator());
       }),
     );
   }

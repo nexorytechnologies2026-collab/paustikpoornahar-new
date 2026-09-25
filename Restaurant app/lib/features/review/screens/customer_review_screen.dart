@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -91,7 +92,7 @@ class _CustomerReviewScreenState extends State<CustomerReviewScreen> {
                   child: ReviewCardWidget(review: searchReviewList![index]),
                 );
               },
-            ) : Padding(padding: EdgeInsets.only(top: context.height * 0.35), child: Text('no_review_found'.tr)) : const CustomerReviewScreenShimmer(),
+            ) : EmptyStateWidget(title: 'no_review_found'.tr, topPadding: 80) : const CustomerReviewScreenShimmer(),
           ),
         ]);
       }),

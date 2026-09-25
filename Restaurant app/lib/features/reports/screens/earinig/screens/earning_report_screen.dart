@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
@@ -282,15 +283,7 @@ class _EarningReportScreenState extends State<EarningReportScreen> {
                     const SizedBox(height: Dimensions.paddingSizeDefault,),
 
 
-                    (reportController.getEarningReportModel?.transactions?.data.isEmpty ?? false) ? Padding(
-                      padding: EdgeInsets.symmetric(vertical: context.height * 0.1),
-                      child: Center(
-                        child: Text(
-                          isEarning ? 'no_earning_found'.tr : isExpense ? 'no_expense_found'.tr : 'no_subscription_found'.tr,
-                          style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).textTheme.bodyLarge!.color?.withValues(alpha: 0.6)),
-                        ),
-                      ),
-                    ) : reportController.getEarningReportModel?.transactions != null ?  ListView.builder(
+                    (reportController.getEarningReportModel?.transactions?.data.isEmpty ?? false) ? EmptyStateWidget(title: isEarning ? 'no_earning_found'.tr : isExpense ? 'no_expense_found'.tr : 'no_subscription_found'.tr) : reportController.getEarningReportModel?.transactions != null ?  ListView.builder(
                       padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeLarge),
                       itemCount: transactionCount,
                       physics: const NeverScrollableScrollPhysics(),

@@ -1,7 +1,7 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
-import 'package:paustik_poornahar_restaurant/common/widgets/custom_asset_image_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_bottom_sheet_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_loader_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/coupon/controllers/coupon_controller.dart';
@@ -276,12 +276,7 @@ class _CouponScreenState extends State<CouponScreen> {
                 ),
               ),
             );
-          }) : Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            const CustomAssetImageWidget(image: Images.noCouponIcon, height: 50, width: 50),
-            const SizedBox(height: Dimensions.paddingSizeDefault),
-
-            Text('no_coupon_available'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).hintColor)),
-          ])) : const Center(child: CircularProgressIndicator());
+          }) : EmptyStateWidget(title: 'no_coupon_available'.tr) : const Center(child: CircularProgressIndicator());
         }),
       ),
 

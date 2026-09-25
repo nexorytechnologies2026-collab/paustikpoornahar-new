@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/empty_state_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -222,7 +223,7 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
                 );
               },
             ),
-          ) : Expanded(child: Center(child: Text('no_item_found'.tr))) : SizedBox(),
+          ) : Expanded(child: EmptyStateWidget(title: 'no_item_found'.tr)) : SizedBox(),
 
         ]);
       }),

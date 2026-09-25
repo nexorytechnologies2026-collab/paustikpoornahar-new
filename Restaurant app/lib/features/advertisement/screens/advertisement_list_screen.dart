@@ -1,3 +1,4 @@
+import 'package:paustik_poornahar_restaurant/common/widgets/status_chip_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
@@ -83,7 +84,7 @@ class _AdvertisementListScreenState extends State<AdvertisementListScreen>{
             margin: const EdgeInsets.all(Dimensions.paddingSizeSmall),
             child: Column(children: [
               SizedBox(
-                height: 40,
+                height: 44,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: advertisementController.statusList.length,
@@ -403,56 +404,15 @@ class _AdvertisementListScreenState extends State<AdvertisementListScreen>{
     } catch(e) {
       adsCount = 0;
     }
-    return InkWell(
+    final (IconData icon, Color color) = StatusChipWidget.styleFor(adsController.statusList[index]);
+    return StatusChipWidget(
+      title: title, isSelected: isSelected, count: adsCount, icon: icon, color: color,
       onTap: () {
         adsController.setStatusIndex(index);
         adsController.setType(adsController.statusList[index]);
         adsController.setOffset(1);
         adsController.getAdvertisementList(adsController.offset.toString(), adsController.type);
       },
-      child: Row(children: [
-
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-            color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).hintColor.withValues(alpha: 0.3),
-          ),
-          alignment: Alignment.center,
-          child: Row(
-            children: [
-              Text(
-                title,
-                maxLines: 1, overflow: TextOverflow.ellipsis,
-                style: robotoMedium.copyWith(
-                  fontSize: Dimensions.fontSizeSmall,
-                  color: isSelected ? Theme.of(context).cardColor : Theme.of(context).textTheme.bodyLarge!.color,
-                ),
-              ),
-
-              Container(
-                margin: const EdgeInsets.only(left: Dimensions.paddingSizeExtraSmall),
-                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall, vertical: 2),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                  color: isSelected ? Theme.of(context).cardColor.withValues(alpha: 0.2) : Theme.of(context).cardColor.withValues(alpha: 0.4),
-                ),
-                child: Text(
-                  adsCount.toString(),
-                  maxLines: 1, overflow: TextOverflow.ellipsis,
-                  style: robotoMedium.copyWith(
-                    fontSize: Dimensions.fontSizeSmall,
-                    color: isSelected ? Theme.of(context).cardColor : Theme.of(context).textTheme.bodyLarge!.color,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-
-        const SizedBox(width: Dimensions.paddingSizeSmall),
-
-      ]),
     );
   }
 }
