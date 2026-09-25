@@ -104,6 +104,30 @@ if (DB::table('business_settings')->where('key', 'toggle_dm_registration')->valu
 }
 Cache::forget('business_settings_keys');
 
+// One-time: landing page texts say "kitchen" instead of "restaurant" (later admin edits are kept)
+if (!DB::table('business_settings')->where('key', 'landing_kitchen_wording')->exists()) {
+    $map = ['Restaurants' => 'Kitchens', 'Restaurant' => 'Kitchen', 'restaurants' => 'kitchens', 'restaurant' => 'kitchen', 'RESTAURANT' => 'KITCHEN'];
+    $isText = fn ($v) => is_string($v) && $v !== '' && json_decode($v) === null && !preg_match('/\.(png|jpe?g|webp|svg|gif)\b/i', $v);
+    $changed = 0;
+    $rows = DB::table('data_settings')->whereIn('type', ['admin_landing_page', 'react_landing_page', 'landing_page_text'])->get(['id', 'value']);
+    foreach ($rows as $row) {
+        if ($isText($row->value) && ($new = strtr($row->value, $map)) !== $row->value) {
+            DB::table('data_settings')->where('id', $row->id)->update(['value' => $new]);
+            $changed++;
+        }
+    }
+    $rows = DB::table('translations')->where('translationable_type', 'App\Models\DataSetting')->get(['id', 'value']);
+    foreach ($rows as $row) {
+        if ($isText($row->value) && ($new = strtr($row->value, $map)) !== $row->value) {
+            DB::table('translations')->where('id', $row->id)->update(['value' => $new]);
+            $changed++;
+        }
+    }
+    Helpers::insert_business_settings_key('landing_kitchen_wording', '1');
+    Cache::flush();
+    say("landing page wording updated in {$changed} texts");
+}
+
 // Marker file on the volume means a later logo/icon change in the admin panel is not overwritten on redeploy
 foreach (['logo' => 'logo.png', 'icon' => 'icon.png'] as $settingKey => $file) {
     $brandFile = base_path('installation/branding/' . $file);
