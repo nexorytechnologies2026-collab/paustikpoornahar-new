@@ -1,7 +1,6 @@
 import 'package:paustik_poornahar_restaurant/common/widgets/status_chip_widget.dart';
 import 'package:flutter/rendering.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_app_bar_widget.dart';
-import 'package:paustik_poornahar_restaurant/common/widgets/custom_asset_image_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_bottom_sheet_widget.dart';
 import 'package:paustik_poornahar_restaurant/common/widgets/custom_image_widget.dart';
 import 'package:paustik_poornahar_restaurant/features/profile/controllers/profile_controller.dart';
@@ -76,7 +75,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> with TickerProvider
         Restaurant? restaurant = profileController.profileModel != null ? profileController.profileModel!.restaurants![0] : null;
         bool isFilterActive = restController.selectedFoodType != 'all' || restController.selectedStockType != 'all';
 
-        return Get.find<ProfileController>().modulePermission!.myRestaurant! ? Scaffold(
+        return Get.find<ProfileController>().modulePermission == null ? const Scaffold(body: Center(child: CircularProgressIndicator()))
+            : Get.find<ProfileController>().modulePermission!.myRestaurant! ? Scaffold(
           appBar: CustomAppBarWidget(title: 'my_restaurant'.tr, isBackButtonExist: false),
 
           body: restaurant != null ? CustomScrollView(
@@ -85,154 +85,135 @@ class _RestaurantScreenState extends State<RestaurantScreen> with TickerProvider
             slivers: [
 
               SliverToBoxAdapter(
-                child: Stack(children: [
+                child: Container(
+                  margin: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
+                    borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge),
+                    border: Border.all(color: Theme.of(context).primaryColor.withValues(alpha: 0.08)),
+                    boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 16, offset: const Offset(0, 4))],
+                  ),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
 
-                  Container(
-                    margin: EdgeInsets.all(Dimensions.paddingSizeDefault),
-                    padding: EdgeInsets.all(3),
-                    height: 250,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      boxShadow: [BoxShadow(color: Colors.black12, spreadRadius: 0, blurRadius: 5)],
-                      borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                    ),
-                    child: Column(children: [
-
-                      Expanded(
-                        flex: 1,
-                        child: ClipRRect(
-                          borderRadius: const BorderRadius.only(topLeft: Radius.circular(Dimensions.radiusDefault), topRight: Radius.circular(Dimensions.radiusDefault)),
-                          child: CustomImageWidget(
-                            fit: BoxFit.cover, placeholder: Images.restaurantCover,
-                            image: '${restaurant.coverPhotoFullUrl}',
-                            width: context.width,
-                          ),
-                        ),
-                      ),
-
-                      Expanded(
-                        flex: 2,
-                        child: Column(children: [
-
-                          Padding(
-                            padding: const EdgeInsets.only(left: 105, top: 12, right: 12, bottom: 5),
-                            child: Row(children: [
-                              Expanded(
-                                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-                                  Text(
-                                    restaurant.name ?? '', style: robotoBold,
-                                    maxLines: 1, overflow: TextOverflow.ellipsis,
-                                  ),
-                                  const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-                                  Text(
-                                    '${'created_at'.tr} ${DateConverter.utcToDate(restaurant.createdAt ?? '')}',
-                                    style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
-                                    maxLines: 1, overflow: TextOverflow.ellipsis,
-                                  ),
-
-                                ]),
-                              ),
-                              SizedBox(width: Dimensions.paddingSizeSmall),
-
-                              InkWell(
-                                onTap: () {
-                                  Get.toNamed(RouteHelper.getRestaurantEditRoute(restaurant));
-                                },
-                                child: CustomAssetImageWidget(image:Images.editIcon, height: 30, width: 30),
-                              ),
-                            ]),
-                          ),
-
-                          SizedBox(
-                            height: 103,
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: Row(children: [
-                                  CountCardWidget(title: 'products'.tr, icon: Images.productCountIcon, count: profileController.profileModel?.productCount ?? 0, color: Color(0xFF2196F3)),
-                                  SizedBox(width: Dimensions.paddingSizeSmall),
-
-                                  CountCardWidget(title: 'orders'.tr, icon: Images.orderCountIcon, count: profileController.profileModel?.orderCount ?? 0),
-                                  SizedBox(width: Dimensions.paddingSizeSmall),
-
-                                  CountCardWidget(title: 'reviews'.tr, icon: Images.reviewCountIcon, count: profileController.profileModel?.reviewCount ?? 0, color: Color(0xFF528C41)),
-                                ]),
-                              ),
-                            ),
-                          ),
-
-
+                    Stack(clipBehavior: Clip.none, children: [
+                      SizedBox(
+                        height: 130, width: double.infinity,
+                        child: Stack(fit: StackFit.expand, children: [
+                          CustomImageWidget(fit: BoxFit.cover, placeholder: Images.restaurantCover, image: '${restaurant.coverPhotoFullUrl}'),
+                          DecoratedBox(decoration: BoxDecoration(gradient: LinearGradient(
+                            begin: Alignment.topCenter, end: Alignment.bottomCenter,
+                            colors: [Colors.black.withValues(alpha: 0.0), Colors.black.withValues(alpha: 0.35)],
+                          ))),
                         ]),
                       ),
 
-                    ]),
-                  ),
-
-                  Positioned(
-                    top: 80, left: 35,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).cardColor,
-                        boxShadow: [BoxShadow(color: Colors.black12, spreadRadius: 0, blurRadius: 5)],
-                        borderRadius: BorderRadius.circular(Dimensions.radiusMedium),
-                      ),
-                      child: ClipOval(
-                        child: CustomImageWidget(
-                          image: '${restaurant.logoFullUrl}',
-                          height: 70, width: 70, fit: BoxFit.cover,
+                      Positioned(
+                        top: Dimensions.paddingSizeSmall, right: Dimensions.paddingSizeSmall,
+                        child: Material(
+                          color: Theme.of(context).cardColor, shape: const CircleBorder(), elevation: 2,
+                          child: InkWell(
+                            customBorder: const CircleBorder(),
+                            onTap: () => Get.toNamed(RouteHelper.getRestaurantEditRoute(restaurant)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+                              child: Icon(Icons.edit_rounded, size: 18, color: Theme.of(context).primaryColor),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
 
-                ]),
+                      Positioned(
+                        left: Dimensions.paddingSizeDefault, bottom: -36,
+                        child: Container(
+                          padding: const EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).cardColor, shape: BoxShape.circle,
+                            boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.12), blurRadius: 8)],
+                          ),
+                          child: ClipOval(child: CustomImageWidget(image: '${restaurant.logoFullUrl}', height: 76, width: 76, fit: BoxFit.cover)),
+                        ),
+                      ),
+                    ]),
+
+                    Padding(
+                      padding: const EdgeInsets.only(left: 108, right: Dimensions.paddingSizeDefault, top: Dimensions.paddingSizeSmall),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Text(restaurant.name ?? '', style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge), maxLines: 1, overflow: TextOverflow.ellipsis),
+                        const SizedBox(height: 2),
+                        Row(children: [
+                          Icon(Icons.calendar_today_rounded, size: 12, color: Theme.of(context).hintColor),
+                          const SizedBox(width: 4),
+                          Flexible(child: Text(
+                            '${'created_at'.tr} ${DateConverter.utcToDate(restaurant.createdAt ?? '')}',
+                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                            maxLines: 1, overflow: TextOverflow.ellipsis,
+                          )),
+                        ]),
+                      ]),
+                    ),
+                    const SizedBox(height: Dimensions.paddingSizeLarge),
+
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(Dimensions.paddingSizeDefault, 0, Dimensions.paddingSizeDefault, Dimensions.paddingSizeDefault),
+                      child: Row(children: [
+                        Expanded(child: CountCardWidget(title: 'products'.tr, iconData: Icons.fastfood_rounded, count: profileController.profileModel?.productCount ?? 0, color: Theme.of(context).primaryColor)),
+                        const SizedBox(width: Dimensions.paddingSizeSmall),
+                        Expanded(child: CountCardWidget(title: 'orders'.tr, iconData: Icons.receipt_long_rounded, count: profileController.profileModel?.orderCount ?? 0, color: const Color(0xFFF08A24))),
+                        const SizedBox(width: Dimensions.paddingSizeSmall),
+                        Expanded(child: CountCardWidget(title: 'reviews'.tr, iconData: Icons.star_rounded, count: profileController.profileModel?.reviewCount ?? 0, color: Theme.of(context).colorScheme.tertiary)),
+                      ]),
+                    ),
+                  ]),
+                ),
               ),
 
               SliverToBoxAdapter(
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
-                    border: Border.all(color: Theme.of(context).disabledColor.withValues(alpha: 0.5)),
-                    borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-                  ),
-                  padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
                   margin: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault),
-                  child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Image.asset(Images.announcementIcon, height: 40, width: 40),
-                    const SizedBox(width: Dimensions.paddingSizeDefault),
+                  padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft, end: Alignment.bottomRight,
+                      colors: [
+                        Color.alphaBlend(Theme.of(context).primaryColor.withValues(alpha: 0.03), Theme.of(context).cardColor),
+                        Color.alphaBlend(Theme.of(context).primaryColor.withValues(alpha: 0.10), Theme.of(context).cardColor),
+                      ],
+                    ),
+                    border: Border.all(color: Theme.of(context).primaryColor.withValues(alpha: 0.18)),
+                    borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
+                  ),
+                  child: Row(children: [
+                    Container(
+                      height: 44, width: 44, alignment: Alignment.center,
+                      decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).cardColor.withValues(alpha: 0.8)),
+                      child: Icon(Icons.campaign_rounded, size: 26, color: Theme.of(context).primaryColor),
+                    ),
+                    const SizedBox(width: Dimensions.paddingSizeSmall),
 
                     Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'make_an_announcement'.tr,
-                            style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault),
-                          ),
-
-                          Text(
-                            'this_will_be_shown_in_the_user_app_web'.tr,
-                            maxLines: 2, overflow: TextOverflow.ellipsis,
-                            style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).textTheme.bodyLarge!.color!.withValues(alpha: 0.5)),
-                          ),
-                        ],
-                      ),
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        Text('make_an_announcement'.tr, maxLines: 1, overflow: TextOverflow.ellipsis, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault)),
+                        Text(
+                          'this_will_be_shown_in_the_user_app_web'.tr,
+                          maxLines: 1, overflow: TextOverflow.ellipsis,
+                          style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                        ),
+                      ]),
                     ),
-                    const SizedBox(width: Dimensions.paddingSizeDefault),
+                    const SizedBox(width: Dimensions.paddingSizeSmall),
 
-                    TextButton(
+                    ElevatedButton(
                       onPressed: () {
                         showCustomBottomSheet(child: AnnouncementBottomSheet(announcementStatus: restaurant.isAnnouncementActive!, announcementMessage: restaurant.announcementMessage ?? ''));
                       },
-                      style: TextButton.styleFrom(
-                        backgroundColor: Theme.of(context).cardColor,
-                        padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeExtraSmall),
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusDefault), side: BorderSide(color: Theme.of(context).disabledColor.withValues(alpha: 0.5))),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).primaryColor, foregroundColor: Colors.white, elevation: 0,
+                        padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: 6),
+                        minimumSize: const Size(0, 32), tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge)),
                       ),
-                      child: Text('create'.tr, style: robotoRegular),
+                      child: Text('create'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall, color: Colors.white)),
                     ),
                   ]),
                 ),
@@ -299,7 +280,7 @@ class _RestaurantScreenState extends State<RestaurantScreen> with TickerProvider
                         padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge),
                         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
 
-                          Text('all_foods'.tr, style: robotoMedium.copyWith(fontWeight: FontWeight.w600)),
+                          Text('all_foods'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
                           const SizedBox(width: 20),
 
                           InkWell(
@@ -307,11 +288,11 @@ class _RestaurantScreenState extends State<RestaurantScreen> with TickerProvider
                               showCustomBottomSheet(child: const FilterDataBottomSheet());
                             },
                             child: Container(
-                              padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
+                              padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(Dimensions.radiusDefault - 2),
-                                color: isFilterActive ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
-                                border: Border.all(color: Theme.of(context).primaryColor),
+                                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+                                color: isFilterActive ? Theme.of(context).primaryColor : Theme.of(context).primaryColor.withValues(alpha: 0.08),
+                                border: Border.all(color: Theme.of(context).primaryColor.withValues(alpha: isFilterActive ? 1 : 0.3)),
                               ),
                               child: Icon(Icons.tune, color:isFilterActive ? Theme.of(context).cardColor : Theme.of(context).primaryColor),
                             ),
@@ -388,29 +369,38 @@ class _RestaurantScreenState extends State<RestaurantScreen> with TickerProvider
 
 class CountCardWidget extends StatelessWidget {
   final String title;
-  final String icon;
+  final IconData iconData;
   final int count;
-  final Color? color;
-  const CountCardWidget({super.key, required this.title, required this.icon, required this.count, this.color});
+  final Color color;
+  const CountCardWidget({super.key, required this.title, required this.iconData, required this.count, required this.color});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 120,
-      padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
+      padding: const EdgeInsets.fromLTRB(10, 10, 8, 10),
       decoration: BoxDecoration(
-        color: Theme.of(context).disabledColor.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(Dimensions.radiusMedium),
+        color: Color.alphaBlend(color.withValues(alpha: 0.06), Theme.of(context).cardColor),
+        border: Border.all(color: color.withValues(alpha: 0.12)),
+        borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Row(children: [
-          Expanded(child: Text(title, style: robotoRegular.copyWith(color: Theme.of(context).hintColor))),
-
-          CustomAssetImageWidget(image: icon, height: 20, width: 20),
-        ]),
+        FittedBox(
+          fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
+          child: Text(count.toString(), style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge + 4, height: 1.1, color: color)),
+        ),
         const SizedBox(height: Dimensions.paddingSizeSmall),
-
-        Text(count.toString(), style: robotoBold.copyWith(fontSize: 20, color: color ?? Theme.of(context).primaryColor)),
+        Row(children: [
+          Expanded(child: FittedBox(
+            fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
+            child: Text(title, maxLines: 1, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor)),
+          )),
+          const SizedBox(width: 4),
+          Container(
+            height: 24, width: 24, alignment: Alignment.center,
+            decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(Dimensions.radiusSmall)),
+            child: Icon(iconData, size: 14, color: color),
+          ),
+        ]),
       ]),
     );
   }
@@ -427,10 +417,10 @@ class SliverDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 100;
+  double get maxExtent => 112;
 
   @override
-  double get minExtent => 100;
+  double get minExtent => 112;
 
   @override
   bool shouldRebuild(SliverDelegate oldDelegate) {
