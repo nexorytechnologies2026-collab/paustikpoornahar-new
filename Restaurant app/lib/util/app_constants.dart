@@ -2,7 +2,7 @@ import 'package:paustik_poornahar_restaurant/features/language/domain/models/lan
 import 'package:paustik_poornahar_restaurant/util/images.dart';
 
 class AppConstants {
-  static const String appName = 'Paustik Poornahar Restaurant';
+  static const String appName = 'Paustik Poornahar Kitchen';
   static const double appVersion = 1.0; ///Flutter SDK: 3.41.6
 
   static const String baseUrl = 'https://backend-production-21c5.up.railway.app';

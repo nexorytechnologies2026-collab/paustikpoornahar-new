@@ -40,7 +40,7 @@
     </queries>
 
     <application
-        android:label="Paustik Poornahar Restaurant"
+        android:label="Paustik Poornahar Kitchen"
         android:name="${applicationName}"
         android:extractNativeLibs="true"
         android:requestLegacyExternalStorage="true"
