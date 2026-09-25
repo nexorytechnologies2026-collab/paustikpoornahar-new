@@ -11,7 +11,7 @@ class BottomNavItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color selectedColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
+    final Color selectedColor = Theme.of(context).primaryColor;
     final Color color = isSelected ? selectedColor : Colors.grey;
 
     return Expanded(
@@ -23,7 +23,7 @@ class BottomNavItemWidget extends StatelessWidget {
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: isSelected ? Theme.of(context).disabledColor.withValues(alpha: 0.35) : Colors.transparent,
+              color: isSelected ? Theme.of(context).primaryColor.withValues(alpha: 0.1) : Colors.transparent,
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(mainAxisSize: MainAxisSize.min, children: [

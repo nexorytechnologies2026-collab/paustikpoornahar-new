@@ -13,58 +13,65 @@ class AdsSectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color primary = Theme.of(context).primaryColor;
 
     return Container(
+      clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withValues(alpha: 0.1),
-        border: Border.all(color: Theme.of(context).primaryColor, width: 0.3),
-        borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft, end: Alignment.bottomRight,
+          colors: [Color.alphaBlend(primary.withValues(alpha: 0.03), Theme.of(context).cardColor), Color.alphaBlend(primary.withValues(alpha: 0.10), Theme.of(context).cardColor)],
+        ),
+        border: Border.all(color: primary.withValues(alpha: 0.18)),
+        borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
       ),
-      padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+      padding: const EdgeInsets.all(Dimensions.paddingSizeLarge),
       child: Row(children: [
-        Image.asset(Images.adsIcon, height: 40, width: 40, color: Theme.of(context).primaryColor,),
-        const SizedBox(width: Dimensions.paddingSizeDefault),
-
         Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'want_to_get_highlighted'.tr,
-                style: robotoBold.copyWith(fontSize: Dimensions.fontSizeDefault),
-              ),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('want_to_get_highlighted'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
+            const SizedBox(height: Dimensions.paddingSizeExtraSmall),
 
-              Text(
-                'create_ads_to_reach_more_customers'.tr,
-                maxLines: 2, overflow: TextOverflow.ellipsis,
-                style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).textTheme.bodyLarge!.color!.withValues(alpha: 0.5)),
+            Text(
+              'create_ads_to_reach_more_customers'.tr,
+              maxLines: 2, overflow: TextOverflow.ellipsis,
+              style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+            ),
+            const SizedBox(height: Dimensions.paddingSizeDefault),
+
+            ElevatedButton(
+              onPressed: () {
+                if(Get.find<ProfileController>().modulePermission!.newAds!){
+                  Get.find<SubscriptionController>().trialEndBottomSheet().then((trialEnd) {
+                    if(trialEnd) {
+                      Get.toNamed(RouteHelper.getCreateAdvertisementRoute());
+                    }
+                  });
+                }else{
+                  showCustomSnackBar('you_have_no_permission_to_access_this_feature'.tr);
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: primary, foregroundColor: Colors.white, elevation: 0,
+                padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeLarge, vertical: Dimensions.paddingSizeSmall),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusExtraLarge)),
               ),
-            ],
-          ),
+              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                Text('create_ads'.tr, style: robotoBold.copyWith(color: Colors.white)),
+                const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+                const Icon(Icons.arrow_forward_rounded, size: 18),
+              ]),
+            ),
+          ]),
         ),
         const SizedBox(width: Dimensions.paddingSizeDefault),
 
-        TextButton(
-          onPressed: (){
-            if(Get.find<ProfileController>().modulePermission!.newAds!){
-              Get.find<SubscriptionController>().trialEndBottomSheet().then((trialEnd) {
-                if(trialEnd) {
-                  Get.toNamed(RouteHelper.getCreateAdvertisementRoute());
-                }
-              });
-            }else{
-              showCustomSnackBar('you_have_no_permission_to_access_this_feature'.tr);
-            }
-          },
-          style: TextButton.styleFrom(
-            backgroundColor: Theme.of(context).primaryColor.withValues(alpha: 0.2),
-            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: Dimensions.paddingSizeExtraSmall),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.radiusLarge)),
-          ),
-          child: Text('create_ads'.tr),
+        Container(
+          height: 96, width: 96, alignment: Alignment.center,
+          decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).cardColor.withValues(alpha: 0.7)),
+          child: Image.asset(Images.adsIcon, height: 54, width: 54, color: primary),
         ),
       ]),
     );
   }
 }
-

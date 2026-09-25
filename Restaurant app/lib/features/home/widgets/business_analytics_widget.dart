@@ -47,9 +47,21 @@ class _BusinessAnalyticsWidgetState extends State<BusinessAnalyticsWidget> {
           break;
       }
     }
-    return Column(children: [
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text('business_analytics'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge),),
+    final Color primary = Theme.of(context).primaryColor;
+    final Color accent = Theme.of(context).colorScheme.tertiary;
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('business_analytics'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
+            const SizedBox(height: 2),
+            Text(
+              'track_your_business_performance'.tr,
+              style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+            ),
+          ]),
+        ),
 
         CustomPopupMenuButton(
           items: items,
@@ -60,14 +72,15 @@ class _BusinessAnalyticsWidgetState extends State<BusinessAnalyticsWidget> {
           },
           child: Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radiusSmall),
+              borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
               color: Theme.of(context).cardColor,
-              border: Border.all(color: Theme.of(context).textTheme.bodyLarge!.color!, width: 0.5),
+              border: Border.all(color: primary.withValues(alpha: 0.3)),
             ),
-            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeSmall, vertical: 2),
+            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeDefault, vertical: Dimensions.paddingSizeSmall),
             child: Row(children: [
-              Text(items[index].title, style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall),),
-              Icon(Icons.keyboard_arrow_down_rounded, size: 14,),
+              Text(items[index].title, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall)),
+              const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+              const Icon(Icons.keyboard_arrow_down_rounded, size: 18),
             ]),
           ),
         ),
@@ -75,76 +88,69 @@ class _BusinessAnalyticsWidgetState extends State<BusinessAnalyticsWidget> {
       const SizedBox(height: Dimensions.paddingSizeLarge),
 
       Row(children: [
-
-        Expanded(child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-            color: Theme.of(context).cardColor,
-            boxShadow: [BoxShadow(color: Colors.grey.withValues(alpha: 0.2), spreadRadius: 1, blurRadius: 5, offset: const Offset(0, 3))],
-          ),
-          padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-              ),
-              padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-              child: Image.asset(Images.walletBold, height: 25),
-            ),
-            const SizedBox(height: Dimensions.paddingSizeSmall),
-
-            Text(
-              'total_earning'.tr,
-              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).textTheme.bodyLarge!.color),
-            ),
-            const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-            Text(
-              PriceConverter.convertPrice(totalEarning),
-              style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).textTheme.bodyLarge!.color), textDirection: TextDirection.ltr,
-            ),
-
-          ]),
+        Expanded(child: _StatCard(
+          color: primary, title: 'total_earning'.tr, value: PriceConverter.convertPrice(totalEarning),
+          icon: Image.asset(Images.walletBold, height: 24, width: 24, color: primary),
         )),
-
-        const SizedBox(width: Dimensions.paddingSizeLarge),
-
-        Expanded(child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-            color: Theme.of(context).cardColor,
-            boxShadow: [BoxShadow(color: Colors.grey.withValues(alpha: 0.2), spreadRadius: 1, blurRadius: 5, offset: const Offset(0, 3))],
-          ),
-          padding: const EdgeInsets.all(Dimensions.paddingSizeSmall),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-              ),
-              padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
-              child: Image.asset(Images.shapeImage, height: 25),
-            ),
-            const SizedBox(height: Dimensions.paddingSizeSmall),
-
-            Text(
-              'total_orders'.tr,
-              style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).textTheme.bodyLarge!.color),
-            ),
-            const SizedBox(height: Dimensions.paddingSizeExtraSmall),
-
-            Text(
-              '$totalOrders',
-              style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge, color: Theme.of(context).textTheme.bodyLarge!.color), textDirection: TextDirection.ltr,
-            ),
-
-          ]),
+        const SizedBox(width: Dimensions.paddingSizeDefault),
+        Expanded(child: _StatCard(
+          color: accent, title: 'total_orders'.tr, value: '$totalOrders',
+          icon: Icon(Icons.room_service_rounded, size: 26, color: accent),
         )),
-
       ]),
     ]);
+  }
+}
+
+class _StatCard extends StatelessWidget {
+  final Color color;
+  final String title;
+  final String value;
+  final Widget icon;
+  const _StatCard({required this.color, required this.title, required this.value, required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
+        gradient: LinearGradient(
+          begin: Alignment.topLeft, end: Alignment.bottomRight,
+          colors: [Theme.of(context).cardColor, Color.alphaBlend(color.withValues(alpha: 0.05), Theme.of(context).cardColor)],
+        ),
+        border: Border.all(color: color.withValues(alpha: 0.10)),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.04), blurRadius: 12, offset: const Offset(0, 4))],
+      ),
+      padding: const EdgeInsets.all(Dimensions.paddingSizeDefault),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Container(
+          height: 44, width: 44, alignment: Alignment.center,
+          decoration: BoxDecoration(color: color.withValues(alpha: 0.10), borderRadius: BorderRadius.circular(Dimensions.radiusDefault)),
+          child: icon,
+        ),
+        const SizedBox(height: Dimensions.paddingSizeDefault),
+
+        Text(title, maxLines: 1, overflow: TextOverflow.ellipsis, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall)),
+        const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+
+        Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          Expanded(
+            child: FittedBox(
+              fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
+              child: Text(value, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge), textDirection: TextDirection.ltr),
+            ),
+          ),
+          const SizedBox(width: Dimensions.paddingSizeExtraSmall),
+          // Decorative mini bar chart
+          Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
+            for (final (double h, double a) in [(10.0, 0.18), (18.0, 0.32), (26.0, 0.55)])
+              Container(
+                width: 6, height: h, margin: const EdgeInsets.only(left: 3),
+                decoration: BoxDecoration(color: color.withValues(alpha: a), borderRadius: BorderRadius.circular(3)),
+              ),
+          ]),
+        ]),
+      ]),
+    );
   }
 }

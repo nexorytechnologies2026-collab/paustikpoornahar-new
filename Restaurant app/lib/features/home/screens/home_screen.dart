@@ -225,7 +225,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(height: profileController.modulePermission?.newAds ?? false ? Dimensions.paddingSizeLarge : 0),
 
                     Row(children: [
-                      Text('ongoing_orders'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                      Text('ongoing_orders'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeExtraLarge)),
                       const Spacer(),
 
                       CustomInkWellWidget(
@@ -234,10 +234,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: Row(children: [
-                            Text('view_all'.tr, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall),),
+                            Text('view_all'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).primaryColor)),
                             const SizedBox(width: Dimensions.paddingSizeExtraSmall),
 
-                            Icon(Icons.arrow_forward_ios_sharp, size: 16),
+                            Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Theme.of(context).primaryColor),
                           ]),
                         ),
                       ),
@@ -258,7 +258,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(children: [
 
                           orderController.runningOrders != null ? SizedBox(
-                            height: 40,
+                            height: 44,
                             child: ListView.builder(
                               scrollDirection: Axis.horizontal,
                               itemCount: orderController.runningOrders!.length,
@@ -340,8 +340,17 @@ class _HomeScreenState extends State<HomeScreen> {
                               return OrderWidget(orderModel: orderList[index], hasDivider: index != orderList.length-1, isRunning: true);
                             },
                           ) : Padding(
-                            padding: const EdgeInsets.only(top: 50, bottom: 50),
-                            child: Center(child: Text('no_order_found'.tr)),
+                            padding: const EdgeInsets.symmetric(vertical: Dimensions.paddingSizeExtraLarge),
+                            child: Column(children: [
+                              Opacity(opacity: 0.45, child: Image.asset(Images.emptyBox, height: 90)),
+                              const SizedBox(height: Dimensions.paddingSizeDefault),
+                              Text('no_order_yet'.tr, style: robotoBold.copyWith(fontSize: Dimensions.fontSizeLarge)),
+                              const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+                              Text(
+                                'new_orders_from_customers_will_appear_here'.tr, textAlign: TextAlign.center,
+                                style: robotoRegular.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor),
+                              ),
+                            ]),
                           ) : ListView.builder(
                             physics: const NeverScrollableScrollPhysics(),
                             shrinkWrap: true,
