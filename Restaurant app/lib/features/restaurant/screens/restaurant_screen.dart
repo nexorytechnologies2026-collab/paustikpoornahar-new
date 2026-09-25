@@ -384,23 +384,23 @@ class CountCardWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        FittedBox(
-          fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
-          child: Text(count.toString(), style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge + 4, height: 1.1, color: color)),
-        ),
-        const SizedBox(height: Dimensions.paddingSizeSmall),
         Row(children: [
           Expanded(child: FittedBox(
             fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
-            child: Text(title, maxLines: 1, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor)),
+            child: Text(count.toString(), style: robotoBold.copyWith(fontSize: Dimensions.fontSizeOverLarge + 4, height: 1.1, color: color)),
           )),
           const SizedBox(width: 4),
           Container(
-            height: 24, width: 24, alignment: Alignment.center,
-            decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(Dimensions.radiusSmall)),
-            child: Icon(iconData, size: 14, color: color),
+            height: 28, width: 28, alignment: Alignment.center,
+            decoration: BoxDecoration(color: color.withValues(alpha: 0.14), borderRadius: BorderRadius.circular(Dimensions.radiusDefault)),
+            child: Icon(iconData, size: 16, color: color),
           ),
         ]),
+        const SizedBox(height: Dimensions.paddingSizeSmall),
+        FittedBox(
+          fit: BoxFit.scaleDown, alignment: Alignment.centerLeft,
+          child: Text(title, maxLines: 1, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall, color: Theme.of(context).hintColor)),
+        ),
       ]),
     );
   }
