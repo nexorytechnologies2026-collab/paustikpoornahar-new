@@ -89,7 +89,7 @@ class MenuScreen extends StatelessWidget {
     if(modulePermission.chat!){
       menuList.add(
         MenuModel(
-        icon: Images.chat, title: 'conversation'.tr, route: RouteHelper.getConversationListRoute(),
+        icon: Images.chat, title: 'chat'.tr, route: RouteHelper.getConversationListRoute(),
         isNotSubscribe: (Get.find<ProfileController>().profileModel!.restaurants![0].restaurantModel == 'subscription'
           && Get.find<ProfileController>().profileModel!.subscription != null && Get.find<ProfileController>().profileModel!.subscription!.chat == 0),
         ),
@@ -105,9 +105,9 @@ class MenuScreen extends StatelessWidget {
     return  Container(
       constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.8),
       width: double.infinity,
-        padding: const EdgeInsets.only(
+        padding: EdgeInsets.only(
           left: Dimensions.paddingSizeDefault, right: Dimensions.paddingSizeDefault,
-          bottom: Dimensions.paddingSizeDefault, top: Dimensions.paddingSizeExtraSmall,
+          bottom: Dimensions.paddingSizeDefault + MediaQuery.of(context).padding.bottom, top: Dimensions.paddingSizeExtraSmall,
         ),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.vertical(top: Radius.circular(Dimensions.radiusExtraLarge)),
@@ -132,7 +132,7 @@ class MenuScreen extends StatelessWidget {
                 return Wrap(
                   alignment: WrapAlignment.center,
                   spacing: Dimensions.paddingSizeDefault,
-                  children: List.generate(18, (index) {
+                  children: List.generate(menuList.length, (index) {
                     return SizedBox(
                       width: (width - Dimensions.paddingSizeDefault * crossAxisCount - 1) / crossAxisCount,
                       child: MenuButtonWidget(menu: menuList[index], isProfile: index == 0, isLogout: index == menuList.length-1, height: (width - Dimensions.paddingSizeDefault * crossAxisCount - 1) / crossAxisCount),

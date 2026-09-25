@@ -69,20 +69,26 @@ class MenuButtonWidget extends StatelessWidget {
         },
         child: Column(children: [
 
-          Container(
-            height: height,
-            padding: MediaQuery.of(context).size.width < 600 ? EdgeInsets.all(Dimensions.paddingSizeDefault) : EdgeInsets.all(Dimensions.paddingSizeExtraLarge),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radiusDefault),
-              color: isLogout ? Get.find<AuthController>().isLoggedIn() ? Theme.of(context).colorScheme.error : Colors.green : Theme.of(context).primaryColor,
-              boxShadow: const [BoxShadow(color: Colors.black12, spreadRadius: 0, blurRadius: 5)],
-            ),
-            alignment: Alignment.center,
-            child: isProfile ? ProfileImageWidget(size: height) : CustomAssetImageWidget(image: menu.icon, width: height, height: height, color: menu.iconColor, fit: BoxFit.contain),
-          ),
-          const SizedBox(height: Dimensions.paddingSizeExtraSmall),
+          Builder(builder: (context) {
+            final bool loggedIn = Get.find<AuthController>().isLoggedIn();
+            final Color accent = isLogout && loggedIn ? Theme.of(context).colorScheme.error : Theme.of(context).primaryColor;
+            return Container(
+              height: height, width: height,
+              padding: EdgeInsets.all(isProfile ? 4 : height * 0.28),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radiusLarge),
+                color: accent.withValues(alpha: 0.08),
+                border: Border.all(color: accent.withValues(alpha: 0.15)),
+              ),
+              alignment: Alignment.center,
+              child: isProfile
+                  ? ClipRRect(borderRadius: BorderRadius.circular(Dimensions.radiusDefault), child: ProfileImageWidget(size: height))
+                  : CustomAssetImageWidget(image: menu.icon, width: height, height: height, color: accent, fit: BoxFit.contain),
+            );
+          }),
+          const SizedBox(height: Dimensions.paddingSizeSmall),
 
-          Text(menu.title, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeSmall), textAlign: TextAlign.center, maxLines: 2,),
+          Text(menu.title, style: robotoMedium.copyWith(fontSize: Dimensions.fontSizeExtraSmall + 0.5, height: 1.3, color: Theme.of(context).textTheme.bodyLarge?.color?.withValues(alpha: 0.85)), textAlign: TextAlign.center, maxLines: 2, overflow: TextOverflow.ellipsis),
 
         ]),
       ),
