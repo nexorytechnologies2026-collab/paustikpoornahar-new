@@ -94,35 +94,22 @@ class DashboardScreenState extends State<DashboardScreen> {
       },
       child: Scaffold(
 
-        floatingActionButton: !GetPlatform.isMobile ? null : Material(
-          elevation: 4,
-          shape: const CircleBorder(),
-          child: FloatingActionButton(
-            backgroundColor: _pageIndex == 2 ? Theme.of(context).primaryColor : Theme.of(context).cardColor,
-            onPressed: () => _setPage(2),
-            child: Image.asset(
-              Images.storeButton, height: 25, width: 25,
-              color: _pageIndex == 2 ? Theme.of(context).cardColor : Theme.of(context).hintColor,
+        bottomNavigationBar: !GetPlatform.isMobile ? const SizedBox() : SafeArea(
+          child: Container(
+            height: 64,
+            margin: const EdgeInsets.fromLTRB(Dimensions.paddingSizeDefault, 0, Dimensions.paddingSizeDefault, Dimensions.paddingSizeSmall),
+            padding: const EdgeInsets.symmetric(horizontal: Dimensions.paddingSizeExtraSmall),
+            decoration: BoxDecoration(
+              color: Theme.of(context).cardColor,
+              borderRadius: BorderRadius.circular(32),
+              boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.08), blurRadius: 16, offset: const Offset(0, 4))],
             ),
-          ),
-        ),
-        floatingActionButtonLocation: !GetPlatform.isMobile ? null : FloatingActionButtonLocation.centerDocked,
-
-        bottomNavigationBar: !GetPlatform.isMobile ? const SizedBox() : BottomAppBar(
-          elevation: 10,
-          notchMargin: 5,
-          surfaceTintColor: Theme.of(context).cardColor,
-          shadowColor: Theme.of(context).hintColor,
-          shape: const CircularNotchedRectangle(),
-
-          child: Padding(
-            padding: const EdgeInsets.all(Dimensions.paddingSizeExtraSmall),
             child: Row(children: [
-              BottomNavItemWidget(imageData: Images.homeButton, isSelected: _pageIndex == 0, onTap: () => _setPage(0)),
-              BottomNavItemWidget(imageData: Images.orderButton, isSelected: _pageIndex == 1, onTap: () => _setPage(1)),
-              const Expanded(child: SizedBox()),
-              BottomNavItemWidget(imageData: Images.walletButton, isSelected: _pageIndex == 3, onTap: () => _setPage(3)),
-              BottomNavItemWidget(imageData: Images.menuButton, isSelected: _pageIndex == 4, onTap: () {
+              BottomNavItemWidget(imageData: Images.homeButton, title: 'home'.tr, isSelected: _pageIndex == 0, onTap: () => _setPage(0)),
+              BottomNavItemWidget(imageData: Images.orderButton, title: 'orders'.tr, isSelected: _pageIndex == 1, onTap: () => _setPage(1)),
+              BottomNavItemWidget(imageData: Images.storeButton, title: 'restaurant'.tr, isSelected: _pageIndex == 2, onTap: () => _setPage(2)),
+              BottomNavItemWidget(imageData: Images.walletButton, title: 'wallet'.tr, isSelected: _pageIndex == 3, onTap: () => _setPage(3)),
+              BottomNavItemWidget(imageData: Images.menuButton, title: 'menu'.tr, isSelected: _pageIndex == 4, onTap: () {
                 Get.bottomSheet(const MenuScreen(), backgroundColor: Colors.transparent, isScrollControlled: true);
               }),
             ]),
